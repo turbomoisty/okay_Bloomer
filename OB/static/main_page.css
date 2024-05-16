@@ -90,10 +90,12 @@ nav ul li a:hover {
 .hero::after {
     content: '';
     background: url("https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/blob/992c20c4f20de7bd702571a4129e176931ff4553/OB/images/logo.png") no-repeat center center;
+    //   image still not showing???
     background-size: contain;
     width: 70px;
     height: 70px;
     display: block;
+
 }
 
 main {
