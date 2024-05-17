@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Collection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='plant_profiles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Plant Collection</h1>
+            <button class="add-plant">Add New Plant</button>
+        </header>
+        <section class="plant-collection">
+            <div class="plant-card">
+                <div class="plant-image"></div>
+                <h2>Plant 1</h2>
+                <p>Care information</p>
+                <div class="plant-actions">
+                    <button>Edit</button>
+                    <button>Remove</button>
+                </div>
+            </div>
+            <div class="plant-card">
+                <div class="plant-image"></div>
+                <h2>Plant 2</h2>
+                <p>Care information</p>
+                <div class="plant-actions">
+                    <button>Edit</button>
+                    <button>Remove</button>
+                </div>
+            </div>
+            <div class="plant-card">
+                <div class="plant-image"></div>
+                <h2>Plant 3</h2>
+                <p>Care information</p>
+                <div class="plant-actions">
+                    <button>Edit</button>
+                    <button>Remove</button>
+                </div>
+            </div>
+        </section>
+        <section class="activity-feed">
+            <h2>Activity Feed</h2>
+            <div class="activity">
+                <div class="activity-image"></div>
+                <p>Activity description</p>
+                <p class="timestamp">Timestamp</p>
+                <button>View Comments</button>
+            </div>
+            <div class="activity">
+                <div class="activity-image"></div>
+                <p>Activity description</p>
+                <p class="timestamp">Timestamp</p>
+                <button>View Comments</button>
+            </div>
+            <div class="activity">
+                <div class="activity-image"></div>
+                <p>Activity description</p>
+                <p class="timestamp">Timestamp</p>
+                <button>View Comments</button>
+            </div>
+            <button class="load-more">Load More Activities</button>
+        </section>
+        <footer>
+            <p>© 2022 Okay Bloomer. All rights reserved.</p>
+            <nav>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>
