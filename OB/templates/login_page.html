@@ -8,6 +8,7 @@
 
 </head>
 <body>
+
     <div class="wrapper">
         <div class="form-wrapper sign-in">
             <form action="">
@@ -21,17 +22,45 @@
                     <label for="">Password</label>
                 </div>
                 <div class="remember">
-                    <label for=""><input type="checkbox"> Remember me</label>
+                    <label><input type="checkbox"> Remember me</label>
                 </div>
                 <button type="submit">Login</button>
                 <div class="signUp-link">
-                    <p> Don't have an account with us?<a href="#" class="signUpButton-link">
+                    <p> Don't have an account with us?<a href="#" class="signInButton-link">
                         Sign up</a>
                     </p>
                 </div>
             </form>
         </div>
+
+        <div class="form-wrapper sign-up">
+            <form action="">
+                <h2>Sign Up</h2>
+                <div class="input-group">
+                    <input type="text" required>
+                    <label for="">Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" required>
+                    <label for="">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" required>
+                    <label for="">Password</label>
+                </div>
+                <div class="remember">
+                    <label><input type="checkbox"> I forfeit all my rights and agree to the terms.</label>
+                </div>
+                <button type="submit">Sign up</button>
+                <div class="signUp-link">
+                    <p>Already have an account?<a href="#" class="signUpButton-link">
+                        Sign in</a>
+                    </p>
+                </div>
+            </form>
+        </div>
     </div>
+
 
     <script src="{{url_for ('static', filename='login_page.js')}}"></script>
 </body>
