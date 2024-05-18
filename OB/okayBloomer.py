@@ -3,9 +3,13 @@ from flask import Flask, render_template, url_for
 app = Flask(__name__)
 
 
+# @app.route('/')
+# def main_page():
+#     return render_template('main_page.html')
+
 @app.route('/')
 def main_page():
-    return render_template('main_page.html')
+    return render_template('login_page.html')
 
 
 @app.route('/plant_profiles')
