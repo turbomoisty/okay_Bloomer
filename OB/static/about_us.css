@@ -15,10 +15,34 @@ body {
 h1 {
     font-size: 120px;
     text-align: center;
+	-webkit-text-stroke: 3px black;
+	-webkit-text-fill-color: rgba(255,255,255,.8);
+
 }
 
 .parallax-1{
-background: url('') no-repeat;
-background-size: cover;
-background-position: center;
-background-attachments: fixed;}
+    background: url('https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/9bf1ffc3177bfabcc59c76303e8ffcc0ae908b2f/OB/images/womanMakesPlantsWet.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachments: fixed;}
+
+.parallax-inner{
+    padding: 10% 0;
+}
+
+h2 {
+    font-size: 32px;
+    color: #555;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 20px 0 10px;
+}
+
+p {
+    font-size: 16px;
+    color #555;
+    text-align: justify;
+    line-height: 30px;
+    margin: 0 50px 40px;
+}
