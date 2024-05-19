@@ -21,13 +21,21 @@ h1 {
 }
 
 .parallax-1{
-    background: url('https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/9bf1ffc3177bfabcc59c76303e8ffcc0ae908b2f/OB/images/womanMakesPlantsWet.png') no-repeat;
+    height: 400px;
+    background: url('https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/f3293b83fbf57a326dfc65eeb02ff5a908711f6e/OB/images/fff.png') no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachments: fixed;}
+    background-attachment: fixed;
+    }
 
 .parallax-inner{
     padding: 10% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    color: white;
 }
 
 h2 {
@@ -41,7 +49,7 @@ h2 {
 
 p {
     font-size: 16px;
-    color #555;
+    color: #555;
     text-align: justify;
     line-height: 30px;
     margin: 0 50px 40px;
