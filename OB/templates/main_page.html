@@ -11,11 +11,10 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#About">About</a></li>
+                <li><a href="{{url_for('about_us')}}">About</a></li>
                 <li><a href="#Services">Services</a></li>
                 <li><a href="{{url_for('plant_profiles')}}">Schedules</a></li>
-                <li class="right"><a href="#login">Login/Sign Up</a></li>
-
+                <li class="right"><a href="{{url_for('login_page')}}">Login/Sign Up</a></li>
             </ul>
         </nav>
         <div class="hero">
