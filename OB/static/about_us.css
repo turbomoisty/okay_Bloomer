@@ -9,7 +9,7 @@
 }
 
 body {
-    background: #fff;
+    background: #D9E5E6;
 }
 
 h1 {
@@ -22,7 +22,15 @@ h1 {
 
 .parallax-1{
     height: 400px;
-    background: url('https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/f3293b83fbf57a326dfc65eeb02ff5a908711f6e/OB/images/fff.png') no-repeat;
+    background: url('https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/962da7df552cc8d53de33a67fc5fa8066cc753ab/OB/images/paraNa.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    }
+
+.parallax-2{
+    height: 400px;
+    background: url('https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/962da7df552cc8d53de33a67fc5fa8066cc753ab/OB/images/paraNa.png') no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -35,7 +43,7 @@ h1 {
     align-items: center;
     height: 100%;
     text-align: center;
-    color: white;
+    color: #02ef;
 }
 
 h2 {
