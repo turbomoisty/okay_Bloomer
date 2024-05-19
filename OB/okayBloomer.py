@@ -7,9 +7,14 @@ app = Flask(__name__)
 # def main_page():
 #     return render_template('main_page.html')
 
+# @app.route('/login_page')
+# def main_page():
+#     return render_template('login_page.html')
+###########REMEMBER TO LINK THIS IN THE HTML FILE AT LINE 17: main_page.htnml########
+
 @app.route('/')
-def main_page():
-    return render_template('login_page.html')
+def about_us():
+    return render_template('about_us.html')
 
 
 @app.route('/plant_profiles')
