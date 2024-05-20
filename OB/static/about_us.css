@@ -1,16 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', 'sans-serif';
-}
 
 body {
-    background: #D9E5E6;
+    font-family: 'Courier New', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #D9e5e6;
 }
+
 
 nav {
     background-color: rgba(0, 0, 0, 0.6);

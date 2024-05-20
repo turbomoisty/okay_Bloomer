@@ -8,7 +8,6 @@
 
 </head>
 <body>
-
     <div class="wrapper">
         <div class="form-wrapper sign-in">
             <form action="">
@@ -30,6 +29,11 @@
                         Sign up</a>
                     </p>
                 </div>
+                <div class="return">
+                    <button><a href="{{url_for('main_page')}}">return to main</a></button>
+                </div>
+
+
             </form>
         </div>
 
@@ -41,8 +45,7 @@
                     <label for="">Username</label>
                 </div>
                 <div class="input-group">
-                    <input type="email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$
-                    " required/>
+                    <input type="email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" required/>
                     <label for="">Email</label>
                 </div>
                 <div class="input-group">
