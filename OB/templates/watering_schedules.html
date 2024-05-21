@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okay Bloomer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='watering_schedules.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">Okay Bloomer</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#Services">Services</a></li>
+                <li><a href="#schedules">Schedules</a></li>
+                <li class="right"><a href="#login">Login/Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <form id="plant-form">
+                <label for="plant-selection">Plant Selection</label>
+                <select id="plant-selection">
+                    <option value="">Select a plant</option>
+                    <!-- Add plant options here -->
+                </select>
+                <label for="last-watered-date">Last Watered Date</label>
+                <input type="date" id="last-watered-date">
+            </form>
+            <section class="watering-history">
+                <h2>Watering History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount of Water</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>June 14, 2022</td>
+                            <td>500 ml</td>
+                        </tr>
+                        <tr>
+                            <td>June 13, 2022</td>
+                            <td>400 ml</td>
+                        </tr>
+                        <tr>
+                            <td>June 12, 2022</td>
+                            <td>300 ml</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button id="back-button">Back</button>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>© 2022 Okay Bloomer. All rights reserved.</p>
+        <div class="links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+    <script src="watering_schedules.js"></script>
+</body>
+</html>
