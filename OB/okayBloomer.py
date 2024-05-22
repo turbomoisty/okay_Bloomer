@@ -1,6 +1,38 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, session, flash, redirect
+from functools import wraps
+import secrets
+
+token_key = secrets.token_hex(16)
+
+# from flask_sqlalchemy import SQLAlchemy
+# from datetime import datetime
+#
+
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'  # three slashes for relative pathing
+app.secret_key = token_key
+
+
+# db = SQLAlchemy(app)
+#
+#
+# class plantJournal(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     content = db.Column(db.String(250), nullable=False)
+#     date_created = db.Column(db.DateTime, default=datetime.now())
+#
+#     def __repr__(self):
+#         return '<Journal %r>' % self.id
+
+def check_login(f):
+    @wraps(f)
+    def dec_functions(*args, **kwargs):
+        if 'user_id' not in session:
+            flash("Sorry, you must be logged in to use this functionality", "danger")
+            return redirect(url_for('login_page'))
+        return f(*args,**kwargs)
+    return dec_functions
 
 
 @app.route('/main_page')  # app decorator for index route so the browser doesn't shit itself when trying to access files
