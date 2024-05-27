@@ -11,16 +11,17 @@ db = SQLAlchemy(app)
 
 class bloomerUser(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    userName = db.Column(db.String(10),index=True, unique=True)
-    userEmail = db.Column(db.String(20),index=True, unique=True)
-    usePassword = db.Column(db.String(10),index=False, uniqe=True)
-
-
+    userName = db.Column(db.String(10), db.foreignKey('user.id'), index=True, unique=True)
+    userEmail = db.Column(db.String(20), index=True, unique=True)
+    usePassword = db.Column(db.String(10), index=False, uniqe=True)
 
 
 # ###NOTES#### unique: When set to True, the values in the column has to be unique index: Wen True, the column is
 
+# journal_entries = db.relationship('Class name - Referring to the 'many' side',backref='attribute name to dynamically allocate',lazy='dynamic')
+# 'One' side of the relationship syntax
 
+#
 # searchable by its values primary key: when True, the column acts as the primary key What is a primary key: Each
 # value is unique across the whole table, primary key cannot contain a null value and is automatically indexed by the
 # database
@@ -30,11 +31,7 @@ class userPlant(db.Model):
     plant_species = db.Column(db.String(30), index=True, unique=False)
     user_notes = db.Column(db.String(100), index=False, Unique=False)
 
-class watering_history(userPlant):
-    watering_history
 
-
-
-
-# class userComment
-
+class plantPost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    post_text = db.Column(db.String(100), index=False, unique=False)
