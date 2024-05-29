@@ -16,6 +16,11 @@ class bloomerUser(db.Model):
     usePassword = db.Column(db.String(10), index=False, uniqe=True)
 
 
+class plantPost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    post_text = db.Column(db.String(100), index=False, unique=False)
+
+
 # ###NOTES#### unique: When set to True, the values in the column has to be unique index: Wen True, the column is
 
 # journal_entries = db.relationship('Class name - Referring to the 'many' side',backref='attribute name to dynamically allocate',lazy='dynamic')
@@ -27,11 +32,7 @@ class bloomerUser(db.Model):
 # database
 class userPlant(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # Primary key column will generate unique key?
-    plant_name = db.Column(db.String(20), index=True, unique=True)
+    plant_name = db.Column(db.String(21), index=True, unique=False)
     plant_species = db.Column(db.String(30), index=True, unique=False)
     user_notes = db.Column(db.String(100), index=False, Unique=False)
 
-
-class plantPost(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    post_text = db.Column(db.String(100), index=False, unique=False)
