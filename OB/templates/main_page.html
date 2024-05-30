@@ -14,7 +14,11 @@
                 <li><a href="{{url_for('about_us')}}">About</a></li>
                 <li><a href="#Services">Services</a></li>
                 <li><a href="{{url_for('plant_profiles')}}">Schedules</a></li>
-                <li class="right"><a href="{{url_for('login_page')}}">Login/Sign Up</a></li>
+                <li class="right"><a href="{{url_for('login_page')}}">Login/Sign Up
+                    {% if session.logged_in % }
+                    <h2> Hello! {{session.bloomerUser}} </h2>
+                    {% end.if %}</a></li>
+
             </ul>
         </nav>
         <div class="hero">
