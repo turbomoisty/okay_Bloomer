@@ -11,13 +11,15 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="{{url_for('about_us')}}">About</a></li>
+                <li><a href="{{url_for('views.about_us')}}">About</a></li>
                 <li><a href="#Services">Services</a></li>
-                <li><a href="{{url_for('plant_profiles')}}">Schedules</a></li>
-                <li class="right"><a href="{{url_for('login_page')}}">Login/Sign Up</a>
-                    {% if session.logged_in % }
-                    <h2> Hello! {{session.bloomerUser}} </h2>
-                    {% endif %}</li>
+                <li><a href="{{url_for('views.plant_profiles')}}">Schedules</a></li>
+                {% if session.get('logged_in') %}
+                    <li class="right"><a href="{{ url_for('auth.logout') }}">Logout</a> </li>
+                    <li class="right"><h2>Hello! {{ session.get('bloomerUser') }}</h2></li>
+                {% else %}
+                    <li class="right"><a href="{{url_for('auth.login_page')}}">Login/Sign Up</a></li>
+                {% endif %}
             </ul>
         </nav>
         <div class="hero">

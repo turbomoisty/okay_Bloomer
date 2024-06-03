@@ -10,45 +10,45 @@ auth = Blueprint('auth', __name__)
 def login_page():
     if request.method == "POST":
         form_type = request.form.get('form_type')
-
+######CHANGE EMAIL TO USERNAME
         if form_type == 'login':
-            email = request.form.get('userEmail')
+            username = request.form.get('userName')
             password = request.form.get('userPassword')
 
-            if not email or password:
-                flash("Invalid email or password", 'error')
+            if not username or not password:
+                flash("Please fill the required fields", 'error')
             else:
-                user = bloomerUser.query.filter_by(userEmail=email).first()
+                user = bloomerUser.query.filter_by(userName=username).first()
                 if user and check_password_hash(user.password_hash, password):
+                    session['logged_in'] = True
                     session['user_id'] = user.id
-                    session['user_name'] = user.userName
-                if user and user.check_password(password):
-                    flash("Login successful")
+                    session['bloomerUser'] = user.userName
+                    flash("Login successful", 'success')
 
                     return redirect(url_for('views.main_page'))
                 else:
-                    flash("Invalid email or password", 'error')
+                    flash("Invalid username or password", 'error')
 
         elif form_type == 'signup':
             username = request.form.get('userName')
             password = request.form.get('userPassword')
             email = request.form.get('userEmail')
 
-            if not username or password or email:
+            if not username or not password or not email:
                 flash("Please ensure all fields are filled", 'error')
             else:
                 existing_user = bloomerUser.query.filter_by(userEmail=email).first()
                 if existing_user:
                     flash("This email has already been registered!", 'error')
                 else:
-                    new_user = bloomerUser(userName=username, userPassword=password)
+                    new_user = bloomerUser(userName=username, userEmail=email)
                     new_user.password = password
                     db.session.add(new_user)
                     db.session.commit()
                     flash('Sign up successful! Please log in.', 'success')
                     return redirect(url_for('login_page'))
 
-    return render_template('login_page.html')
+    return render_template('auth.login_page.html')
 
 
 @auth.route('/logout')
