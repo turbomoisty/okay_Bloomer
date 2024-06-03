@@ -15,10 +15,10 @@
                 <li><a href="#Services">Services</a></li>
                 <li><a href="{{url_for('views.plant_profiles')}}">Schedules</a></li>
                 {% if session.get('logged_in') %}
-                    <li class="right"><a href="{{ url_for('auth.logout') }}">Logout</a> </li>
-                    <li class="right"><h2>Hello! {{ session.get('bloomerUser') }}</h2></li>
+                    <li class="user-info">Hello {{ session.get('bloomerUser') }}!</li>
+                    <li><a href="{{ url_for('auth.logout') }}">Logout</a> </li>
                 {% else %}
-                    <li class="right"><a href="{{url_for('auth.login_page')}}">Login/Sign Up</a></li>
+                    <li><a href="{{url_for('auth.login_page')}}">Login/Sign Up</a></li>
                 {% endif %}
             </ul>
         </nav>

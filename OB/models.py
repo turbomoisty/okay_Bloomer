@@ -11,7 +11,7 @@ class bloomerUser(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userName = db.Column(db.String(10), index=True, unique=True)
     userEmail = db.Column(db.String(20), index=True, unique=True)
-    userPassword = db.Column(db.String(10), index=False, unique=True)
+    userPassword = db.Column(db.String(15), index=False, unique=False)
 
     poster = db.relationship('userCommunityPost', backref='originalPoster', lazy=True)
     journal = db.relationship('journalEntry', backref='obUser', lazy=True)
