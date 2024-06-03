@@ -8,18 +8,46 @@
 
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('views.main_page')}}">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Services">Services</a></li>
+                <li><a href="{{url_for('views.plant_profiles')}}">Schedules</a></li>
+                {% if session.get('logged_in') %}
+                    <li class="right">Hello {{ session.get('bloomerUser') }}!</li>
+                    <li class="logout"><a href="{{ url_for('auth.logout') }}">Logout</a> </li>
+                {% else %}
+                <li><a href="{{url_for('auth.login_page')}}">Login/Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div class="wrapper-alert">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    </div>
 
     <div class="wrapper">
         <div class="form-wrapper sign-in">
-            <form action="">
+            <form action="{{url_for('auth.login_page')}}" method="POST">
+                <input type="hidden" name="form_type" value="login">
                 <h2> login</h2>
                 <div class="input-group">
-                    <input type="text" required>
-                    <label for="">Username</label>
+                    <input type="text" name="userName" required>
+                    <label for="userName">Username</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" required>
-                    <label for="">Password</label>
+                    <input type="password" name="userPassword" required>
+                    <label for="userPassword">Password</label>
                 </div>
                 <div class="remember">
                     <label><input type="checkbox"> Remember me</label>
@@ -33,21 +61,24 @@
             </form>
         </div>
 
+
+
         <div class="form-wrapper sign-up">
-            <form action="">
+            <form action="{{ url_for('auth.login_page')}}" method="POST">
+                <input type="hidden" name="form_type" value="signup">
                 <h2>Sign Up</h2>
                 <div class="input-group">
-                    <input type="text" required>
-                    <label for="">Username</label>
+                    <input type="text" name="userName" required>
+                    <label for="userName">Username</label>
                 </div>
                 <div class="input-group">
-                    <input type="email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$
+                    <input type="email" name="userEmail" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$
                     " required/>
-                    <label for="">Email</label>
+                    <label for="userEmail">Email</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" required>
-                    <label for="">Password</label>
+                    <input type="password" name="userPassword" required>
+                    <label for="userPassword">Password</label>
                 </div>
                 <div class="remember">
                     <label><input type="checkbox"> I forfeit all my rights and agree to the terms.</label>
@@ -61,8 +92,6 @@
             </form>
         </div>
     </div>
-
-
     <script src="{{url_for ('static', filename='login_page.js')}}"></script>
 </body>
 </html>

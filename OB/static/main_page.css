@@ -27,7 +27,7 @@ nav {
     width: 100%;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding:1px 20px;
 }
@@ -37,8 +37,10 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-grow: 1;
+    width: 100%;
     justify-content: center;
+    align-items:center;
+
 }
 
 nav ul li {
@@ -49,7 +51,7 @@ nav ul li {
 nav ul li a {
     display: inline-block;
     color: white;
-    text-align: center;
+    text-align: top;
     padding: 14px 16px;
     text-decoration: none;
 }
@@ -59,8 +61,10 @@ nav ul li a:hover {
     color: black;}
 
 
- nav ul li.right{
+ nav ul li.user-info{
     float: right;
+    color: #61f4de;
+    margin-right:10px;
 }
 
 .hero {
@@ -114,6 +118,23 @@ main {
 
 .info-block p {
     color: #587958;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: -3px 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer .links a {
+    margin-left: 5px;
+    text-decoration: none;
+    color: white;
 }
 
 footer {
