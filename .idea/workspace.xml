@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ea55a34-a291-4e15-9b36-abf98b925fff" name="Changes" comment="start file">
-      <change afterPath="$PROJECT_DIR$/OB/templates/under_construction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OB/static/about_us.css" beforeDir="false" afterPath="$PROJECT_DIR$/OB/static/about_us.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OB/static/login_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/OB/static/login_page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OB/static/login_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/OB/static/login_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OB/templates/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/OB/templates/about_us.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OB/templates/login_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/OB/templates/login_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OB/templates/main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/OB/templates/main_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OB/templates/under_construction.html" beforeDir="false" afterPath="$PROJECT_DIR$/OB/templates/under_construction.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OB/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/OB/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,18 +62,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.models.executor": "Run",
-    "Python.okayBloomer.executor": "Run",
-    "Python.run.executor": "Run",
-    "Python.views.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "journal__update"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.models.executor&quot;: &quot;Run&quot;,
+    &quot;Python.okayBloomer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;Python.views.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;journal__update&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/OB/images" />

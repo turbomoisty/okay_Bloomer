@@ -13,8 +13,8 @@
             <ul>
                 <li><a href="{{url_for('views.main_page')}}">Home</a></li>
                 <li><a href="#About">About</a></li>
-                <li><a href="#Services">Services</a></li>
-                <li><a href="{{url_for('views.plant_profiles')}}">Schedules</a></li>
+                <li><a href="{{url_for('views.under_construction')}}">Services</a></li>
+                <li><a href="{{url_for('views.watering_schedules')}}">Schedules</a></li>
                 {% if session.get('logged_in') %}
                     <li class="user-info">Hello {{ session.get('bloomerUser') }}!</li>
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a> </li>
