@@ -19,7 +19,7 @@ nav {
     width: 100%;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding:1px 20px;
 }
@@ -29,8 +29,9 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-grow: 1;
+    width: 100%
     justify-content: center;
+    align-items:center;
 }
 
 nav ul li {
@@ -51,9 +52,10 @@ nav ul li a:hover {
     color: black;}
 
 
- nav ul li.right{
+ nav ul li.user-info{
     float: right;
-    color: #61f4de;
+    color: #f0f48f;
+    margin-right:10px;
 }
 
 h1 {

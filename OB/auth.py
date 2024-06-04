@@ -10,7 +10,6 @@ auth = Blueprint('auth', __name__)
 def login_page():
     if request.method == "POST":
         form_type = request.form.get('form_type')
-######CHANGE EMAIL TO USERNAME
         if form_type == 'login':
             username = request.form.get('userName')
             password = request.form.get('userPassword')
