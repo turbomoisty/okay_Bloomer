@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template,request, redirect
+from flask import Blueprint, render_template,request, redirect,session,flash,url_for
 
 views = Blueprint('views', __name__)
 
@@ -22,6 +22,9 @@ def plant_profiles():
 
 @views.route('/watering_schedules')
 def watering_schedules():
+    if not session.get('logged_in'):
+        flash("Please log in to access these features")
+        return redirect(url_for('auth.login_page'))
     return render_template('watering_schedules.html')
 
 

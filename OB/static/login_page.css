@@ -7,7 +7,17 @@
     box-sizing: border-box;
     font-family: 'Courier New', sans-serif;
 }
+.flashes {
+    display: none;
+}
 
+.flashes .error{
+    color:red;
+}
+
+.flashes .success{
+    color: green;
+}
 body{
     display: flex;
     justify-content: center;

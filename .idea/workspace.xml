@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ea55a34-a291-4e15-9b36-abf98b925fff" name="Changes" comment="start file">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/okay_bloomer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/okay_bloomer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OB/templates/under_construction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OB/static/about_us.css" beforeDir="false" afterPath="$PROJECT_DIR$/OB/static/about_us.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OB/static/login_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/OB/static/login_page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OB/static/login_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/OB/static/login_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OB/templates/login_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/OB/templates/login_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OB/templates/main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/OB/templates/main_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OB/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/OB/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,12 +21,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -39,6 +48,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/OB/templates/login_page.html" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -54,19 +66,21 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "Python.models.executor": "Run",
     "Python.okayBloomer.executor": "Run",
+    "Python.run.executor": "Run",
     "Python.views.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "journal__update"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/OB/templates" />
-      <recent name="$PROJECT_DIR$/OB" />
       <recent name="$PROJECT_DIR$/OB/images" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/OB" />
+      <recent name="$PROJECT_DIR$/OB/templates" />
       <recent name="$PROJECT_DIR$/OB/static" />
     </key>
   </component>
