@@ -1,10 +1,11 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect, session, flash, url_for
 
 views = Blueprint('views', __name__)
 
 
 @views.route('/')  # Same routing for displaying the main page
-@views.route('/main_page')  # app decorator for index route so the browser doesn't shit itself when trying to access files
+@views.route(
+    '/main_page')  # app decorator for index route so the browser doesn't shit itself when trying to access files
 # Don't forget to add the url string parameter for the route.
 def main_page():
     return render_template('main_page.html')
@@ -22,6 +23,9 @@ def plant_profiles():
 
 @views.route('/watering_schedules')
 def watering_schedules():
+    if not session.get('logged_in'):
+        flash("Please log in to access these features")
+        return redirect(url_for('auth.login_page'))
     return render_template('watering_schedules.html')
 
 
@@ -29,3 +33,7 @@ def watering_schedules():
 def plant_journal():
     return render_template('plant_journal.html')
 
+
+@views.route('/under_construction')
+def under_construction():
+    return render_template('under_construction.html')

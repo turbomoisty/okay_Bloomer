@@ -12,9 +12,9 @@
         <nav>
             <ul>
                 <li><a href="{{url_for('views.main_page')}}">Home</a></li>
-                <li><a href="#About">About</a></li>
-                <li><a href="#Services">Services</a></li>
-                <li><a href="{{url_for('views.plant_profiles')}}">Schedules</a></li>
+                <li><a href="{{url_for('views.about_us')}}">About</a></li>
+                <li><a href="{{url_for('views.under_construction')}}">Services</a></li>
+                <li><a href="{{url_for('views.watering_schedules')}}">Schedules</a></li>
                 {% if session.get('logged_in') %}
                     <li class="right">Hello {{ session.get('bloomerUser') }}!</li>
                     <li class="logout"><a href="{{ url_for('auth.logout') }}">Logout</a> </li>
@@ -27,9 +27,9 @@
     <div class="wrapper-alert">
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-            <ul class="flashes">
+            <ul class="flashes" id="flashes">
                 {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
+                    <li class="{{ category }}" data-message="{{ message }}">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
