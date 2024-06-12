@@ -10,50 +10,59 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{{url_for('main_page')}}">Home</a></li>
-                <li><a href="{{url_for('about_us')}}">About</a></li>
-                <li><a href="#Services">Services</a></li>
-                <li><a href="{{url_for('plant_profiles')}}">Schedules</a></li>
-                <li class="right"><a href="{{url_for('login_page')}}">Login/Sign Up</a></li>
+                <li><a href="{{url_for('views.main_page')}}">Home</a></li>
+                <li><a href="{{url_for('views.about_us')}}">About</a></li>
+                <li><a href="{{url_for('views.under_construction')}}">Services</a></li>
+                <li><a href="{{url_for('views.watering_schedules')}}">Schedules</a></li>
+                {% if session.get('logged_in') %}
+                    <li class="right">Hello {{ session.get('bloomerUser') }}!</li>
+                    <li class="logout"><a href="{{ url_for('auth.logout') }}">Logout</a> </li>
+                {% else %}
+                <li><a href="{{url_for('auth.login_page')}}">Login/Sign Up</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
     <main>
         <div class="container">
-            <section class="plant-details">
-                <h2>Plant Details</h2>
-                <p>Plant Name: [Plant Name]</p>
-                <p>Species: [Plant Species]</p>
-                <p>Other Information: [Other Plant Information]</p>
-            </section>
-            <section class="journal-entry">
-                <h2>Journal Entry</h2>
-                <textarea id="journal-text" placeholder="Enter your journal entry here"></textarea>
-                <div class="image-upload">
-                    <h3>Image Upload</h3>
-                    <input type="file" id="image-upload">
-                </div>
-                <button id="save-entry">Save Entry</button>
-            </section>
-            <section class="previous-entries">
-                <h2>Previous Entries</h2>
-                <div class="entry">
-                    <p>[Entry Date and Time]</p>
-                    <p>[Entry Summary]</p>
-                    <a href="#">View Entry</a>
-                </div>
-                <div class="entry">
-                    <p>[Entry Date and Time]</p>
-                    <p>[Entry Summary]</p>
-                    <a href="#">View Entry</a>
-                </div>
-                <div class="entry">
-                    <p>[Entry Date and Time]</p>
-                    <p>[Entry Summary]</p>
-                    <a href="#">View Entry</a>
-                </div>
-            </section>
+            <div class="form-container plant-log">
+                <form name="journal-entry" action="{{url_for('views.plant_journal') }}" method="POST">
+                <section class="plant-details">
+                    <h2>Plant Details</h2>
+                    <p>Plant Name: [Plant Name]</p>
+                    <p>Species: [Plant Species]</p>
+                    <p>Other Information: [Other Plant Information]</p>
+                </section>
+                <section class="journal-entry">
+                    <h2>Journal Entry</h2>
+                    <textarea id="journal-text" name="journal-text-entry" placeholder="Enter your journal entry here"></textarea>
+                    <div class="image-upload">
+                        <h3>Image Upload</h3>
+                        <input type="file" id="image-upload">
+                    </div>
+                    <button id="save-entry">Save Entry</button>
+                </section>
+                <section class="previous-entries">
+                    <h2>Previous Entries</h2>
+                    <div class="entry">
+                        <p>[Entry Date and Time]</p>
+                        <p>[Entry Summary]</p>
+                        <a href="#">View Entry</a>
+                    </div>
+                    <div class="entry">
+                        <p>[Entry Date and Time]</p>
+                        <p>[Entry Summary]</p>
+                        <a href="#">View Entry</a>
+                    </div>
+                    <div class="entry">
+                        <p>[Entry Date and Time]</p>
+                        <p>[Entry Summary]</p>
+                        <a href="#">View Entry</a>
+                    </div>
+                </section>
+                </form>
             <button id="back-to-plant">Back to Plant</button>
+            </div>
         </div>
     </main>
     <footer>
@@ -67,3 +76,17 @@
     <script src="{{ url_for('static', filename='js/main_page.js')}}"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

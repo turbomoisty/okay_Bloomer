@@ -32,6 +32,7 @@ class bloomerUser(db.Model):
 class journalEntry(db.Model):
     __tablename__ = 'journal_entry'
     id = db.Column(db.Integer, primary_key=True)
+    journal_title = db.Column(db.String(20),nullable=False)
     journalEntry = db.Column(db.String(200), nullable=False, unique=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('bloomer_user.id'))
@@ -42,7 +43,7 @@ class journalEntry(db.Model):
 class userCommunityPost(db.Model):
     __tablename__ = 'user_community_post'
     id = db.Column(db.Integer, primary_key=True)
-    comPostTitle = db.Column(db.String(15), nullable=False)
+    PostTitle = db.Column(db.String(15), nullable=False)
     postText = db.Column(db.String(280), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('bloomer_user.id'))

@@ -1,70 +1,104 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Okay Bloomer</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='watering_schedules.css') }}">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='watering_schedules.css')}}">
 </head>
 <body>
     <header>
-        <div class="logo">Okay Bloomer</div>
         <nav>
             <ul>
-                <li><a href="{{url_for('main_page')}}">Home</a></li>
-                <li><a href="{{url_for('about_us')}}">About</a></li>
-                <li><a href="#Services">Services</a></li>
-                <li><a href="{{url_for('plant_journals')}}">Schedules</a></li>
-                <li class="right"><a href="{{url_for('login_page'}}">Login/Sign Up</a></li>
+                <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
+                <li><a href="{{ url_for('views.about_us') }}">About</a></li>
+                <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
+                <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
+                {% if session.get('logged_in') %}
+                    <li class="right">Hello {{ session.get('bloomerUser') }} </li>
+                    <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
+                {% else %}
+
+                <li class="right"><a href="{{ url_for('auth.login_page') }}">Login/Sign Up</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
-    <main>
-        <div class="container">
-            <form id="plant-form">
-                <label for="plant-selection">Plant Selection</label>
-                <select id="plant-selection">
-                    <option value="">Select a plant</option>
-                    <!-- Add plant options here -->
-                </select>
-                <label for="last-watered-date">Last Watered Date</label>
-                <input type="date" id="last-watered-date">
+    <div class="container">
+        <header>
+            {%if session.get('logged_in') %}
+            <h2>{{session.get('bloomerUser')}}'s Plant profile</h2>
+            {% endif %}
+        </header>
+        <section class="profile">
+            <div class="user-info">
+                <h2>User Name</h2>
+                <p>Welcome to your plant care profile!</p>
+            </div>
+            <div class="plant-info">
+                <h3>Selected Plants</h3>
+                <ul>
+                    <li>Plant 1</li>
+                    <li>Plant 2</li>
+                    <li>Plant 3</li>
+                </ul>
+                <button class="add-plant">Add Plant</button>
+            </div>
+        </section>
+        <section class="watering-schedule">
+            <h3>Watering Schedule</h3>
+            <ul>
+                <li>Plant 1: Every 3 days</li>
+                <li>Plant 2: Every 5 days</li>
+                <li>Plant 3: Every 7 days</li>
+            </ul>
+            <button class="update-schedule">Update Schedule</button>
+        </section>
+        <section class="comment-log">
+            <h3>Comment Log</h3>
+            <ul>
+                <li>Log Entry 1: Watered Plant 1 today.</li>
+                <li>Log Entry 2: Plant 2 looks healthier.</li>
+            </ul>
+            <form class="comment-form">
+                <textarea placeholder="Add a comment..."></textarea>
+                <button type="submit">Post Comment</button>
             </form>
-            <section class="watering-history">
-                <h2>Watering History</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Amount of Water</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>June 14, 2022</td>
-                            <td>500 ml</td>
-                        </tr>
-                        <tr>
-                            <td>June 13, 2022</td>
-                            <td>400 ml</td>
-                        </tr>
-                        <tr>
-                            <td>June 12, 2022</td>
-                            <td>300 ml</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button id="back-button">Back</button>
-            </section>
-        </div>
-    </main>
-    <footer>
-        <p>© 2022 Okay Bloomer. All rights reserved.</p>
-        <div class="links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-        </div>
-    </footer>
-    <script src="watering_schedules.js"></script>
+        </section>
+        <section class="image-upload">
+            <h3>Image Upload</h3>
+            <form class="upload-form">
+                <input type="file" accept="image/*">
+                <button type="submit">Upload Image</button>
+            </form>
+        </section>
+    </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

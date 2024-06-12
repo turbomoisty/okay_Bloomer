@@ -1,5 +1,4 @@
 from OB import create_site
-from flask import Flask
 from OB import views
 
 # Database configuration

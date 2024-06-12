@@ -72,8 +72,7 @@
                     <label for="userName">Username</label>
                 </div>
                 <div class="input-group">
-                    <input type="email" name="userEmail" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$
-                    " required/>
+                    <input type="email" name="userEmail" pattern="[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}" required/>
                     <label for="userEmail">Email</label>
                 </div>
                 <div class="input-group">
@@ -81,7 +80,7 @@
                     <label for="userPassword">Password</label>
                 </div>
                 <div class="remember">
-                    <label><input type="checkbox"> I forfeit all my rights and agree to the terms.</label>
+                    <label><input type="checkbox" required> I forfeit all my rights and agree to the terms.</label>
                 </div>
                 <button type="submit">Sign up</button>
                 <div class="signUp-link">

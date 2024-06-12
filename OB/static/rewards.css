@@ -1,0 +1,108 @@
+body {
+    font-family: 'Courier New', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:1px 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #ddd;
+    color: black;}
+
+
+ nav ul li.right{
+    float: right;
+}
+
+.container {
+    background-color: #1E5631;
+    max-width: 800px;
+    margin: 200px auto 20px; /* This will set a 40px top margin, auto for left and right, and 20px bottom margin */
+
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.preview {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.feature {
+    margin-bottom: 20px;
+}
+
+.feature h2 {
+    color: #555;
+}
+
+.feature p {
+    color: #777;
+}
+
+
+.login-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #45a049;
+}
