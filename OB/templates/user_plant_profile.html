@@ -11,15 +11,16 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{{url_for('views.main_page')}}">Home</a></li>
-                <li><a href="{{url_for('views.about_us')}}">About</a></li>
-                <li><a href="{{url_for('views.under_construction')}}">Services</a></li>
-                <li><a href="{{url_for('views.watering_schedules')}}">Schedules</a></li>
+                <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
+                <li><a href="{{ url_for('views.about_us') }}">About</a></li>
+                <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
                 {% if session.get('logged_in') %}
-                    <li class="right">Hello {{ session.get('bloomerUser') }}!</li>
-                    <li class="logout"><a href="{{ url_for('auth.logout') }}">Logout</a> </li>
+                    <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
+                    <li class="right">Hello {{ session.get('bloomerUser') }} </li>
+                    <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
                 {% else %}
-                <li><a href="{{url_for('auth.login_page')}}">Login/Sign Up</a></li>
+                    <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
+                    <li class="right"><a href="{{ url_for('auth.login_page') }}">Login/Sign Up</a></li>
                 {% endif %}
             </ul>
         </nav>

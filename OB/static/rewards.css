@@ -2,6 +2,7 @@ body {
     font-family: 'Courier New', sans-serif;
     margin: 0;
     padding: 0;
+    background: url("https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/062d9666fd6b479d8d4d982205dfe0186ad78eb8/OB/images/removed-plant.png") repeat-x;
     background-color: #f7f7f7;
 }
 
@@ -52,7 +53,7 @@ nav ul li a:hover {
 .container {
     background-color: #1E5631;
     max-width: 800px;
-    margin: 200px auto 20px; /* This will set a 40px top margin, auto for left and right, and 20px bottom margin */
+    margin: 150px auto 20px;
 
     padding: 20px;
 }
