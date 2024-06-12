@@ -25,16 +25,21 @@
             </ul>
         </nav>
     </header>
+
     <div class="container">
-        <header>
-            {%if session.get('logged_in') %}
-            <h2>{{session.get('bloomerUser')}}'s Plant profile</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
             {% endif %}
-        </header>
+        {% endwith %}
         <section class="profile">
             <div class="user-info">
-                <h2>User Name</h2>
-                <p>Welcome to your plant care profile!</p>
+                {%if session.get('logged_in') %}
+                <h2>{{session.get('bloomerUser')}}'s Plant page</h2>
+                {% endif %}
+                <p style="color:#fff;">Welcome to your plant care profile!</p>
             </div>
             <div class="plant-info">
                 <h3>Selected Plants</h3>
@@ -65,8 +70,8 @@
             <ul id="comment-list">
 
             </ul>
-            <form action="comment-form" method="post" class="comment-form">
-                <textarea placeholder="Add a comment..."></textarea>
+            <form action="/comment-form" method="post" class="comment-form">
+                <textarea name = "comment" placeholder="Add a comment..." required></textarea>
                 <button type="submit">Post Comment</button>
             </form>
         </section>

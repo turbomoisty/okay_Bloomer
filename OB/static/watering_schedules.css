@@ -3,6 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: white;
+    background: url("https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/298b7f8ed41f46ff4aa4b6f7c36b0fe484156e64/OB/images/%E2%80%94Pngtree%E2%80%94green%20watercolor%20plant%20background_1277171.png") no-repeat;
+    background-size: cover;
 }
 nav {
     background-color: rgba(0, 0, 0, 0.6);
@@ -63,7 +65,7 @@ header {
 
 header h1 {
     font-size: 2.5rem;
-    color: #333;
+    color: #fff;
 }
 
 .profile, .watering-schedule, .comment-log, .image-upload {
@@ -75,7 +77,7 @@ header h1 {
 }
 
 h2, h3 {
-    color: #555;
+    color: #fff;
 }
 
 .user-info p {
