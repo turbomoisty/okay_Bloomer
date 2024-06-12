@@ -16,7 +16,7 @@
                 <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
                 {% if session.get('logged_in') %}
                     <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
-                    <li class="right">Hello {{ session.get('bloomerUser') }} </li>
+                    <li style="color:#85FF00;"> Hello {{ session.get('bloomerUser') }}! </li>
                     <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
@@ -38,30 +38,34 @@
             </div>
             <div class="plant-info">
                 <h3>Selected Plants</h3>
-                <ul>
-                    <li>Plant 1</li>
-                    <li>Plant 2</li>
-                    <li>Plant 3</li>
+                <ul id="plant-list">
+
                 </ul>
-                <button class="add-plant">Add Plant</button>
+                <form action="/add-plant" method="post">
+                    <input type="text" name="plant_name" placeholder="Add your plant!" required>
+                    <button class="add-plant">Add Plant</button>
+                </form>
             </div>
         </section>
         <section class="watering-schedule">
             <h3>Watering Schedule</h3>
-            <ul>
-                <li>Plant 1: Every 3 days</li>
-                <li>Plant 2: Every 5 days</li>
-                <li>Plant 3: Every 7 days</li>
+            <ul id="scheduling-list">
+
             </ul>
-            <button class="update-schedule">Update Schedule</button>
+            <form action ="/add-schedule" method="post">
+                <input type="text" name="plant_name" placeholder="Your plant name" required>
+                <input type="text" name="scheduling_interval" placeholder="Your watering schedule" required>
+
+                <button class="update-schedule">Update Schedule</button>
+            </form>
+
         </section>
         <section class="comment-log">
             <h3>Comment Log</h3>
-            <ul>
-                <li>Log Entry 1: Watered Plant 1 today.</li>
-                <li>Log Entry 2: Plant 2 looks healthier.</li>
+            <ul id="comment-list">
+
             </ul>
-            <form class="comment-form">
+            <form action="comment-form" method="post" class="comment-form">
                 <textarea placeholder="Add a comment..."></textarea>
                 <button type="submit">Post Comment</button>
             </form>

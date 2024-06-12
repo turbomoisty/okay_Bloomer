@@ -16,7 +16,7 @@
                 <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
                 {% if session.get('logged_in') %}
                     <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
-                    <li class="right">Hello {{ session.get('bloomerUser') }} </li>
+                    <li style="color:#85FF00;"> Hello {{ session.get('bloomerUser') }}! </li>
                     <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>

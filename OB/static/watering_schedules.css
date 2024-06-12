@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', sans-serif;
     margin: 0;
     padding: 0;
     background-color: white;
@@ -12,7 +12,7 @@ nav {
     width: 100%;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding:1px 20px;
 }
@@ -22,7 +22,8 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-grow: 1;
+    width: 100%;
+    align-items:center;
     justify-content: center;
 }
 

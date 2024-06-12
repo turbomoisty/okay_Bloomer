@@ -86,7 +86,7 @@ nav ul li a:hover {
 
 .hero-logo {
     width: 300px;
-    height: auto; /* Ensures the image scales while maintaining aspect ratio */
+    height: auto;
     margin-left: 0px;
 }
 
