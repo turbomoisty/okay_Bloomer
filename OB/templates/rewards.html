@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Page</title>
+    <link rel="stylesheet" href=" {{ url_for ('static', filename='rewards.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
+                <li><a href="{{ url_for('views.about_us') }}">About</a></li>
+                <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
+                {% if session.get('logged_in') %}
+                    <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
+                    <li class="right">Hello {{ session.get('bloomerUser') }} </li>
+                    <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
+                    <li class="right"><a href="{{ url_for('auth.login_page') }}">Login/Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <header>
+            <h1>Welcome to Your Plant Care Profile!</h1>
+        </header>
+        <section class="preview">
+            <div class="feature">
+                <img src="" alt="management" style="width:100%;">
+                <h2>Manage Your Plants</h2>
+                <p>Keep track of all your plants in one place, and add new ones easily.</p>
+            </div>
+            <div class="feature">
+                <h2>Watering Schedule</h2>
+                <p>Set and view watering schedules for each of your plants to ensure they stay healthy.</p>
+            </div>
+            <div class="feature">
+                <h2>Comment Log</h2>
+                <p>Log your observations and track your plants' growth over time.</p>
+            </div>
+            <div class="feature">
+                <h2>Image Upload</h2>
+                <p>Upload pictures of your plants to monitor their progress visually.</p>
+            </div>
+            <div class="login-btn-container">
+                <a href="{{ url_for('auth.login_page') }}" class="login-btn">Click to log in!</a>
+            </div>
+
+        </section>
+    </div>
+</body>
+</html>

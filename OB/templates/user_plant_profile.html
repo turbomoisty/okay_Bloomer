@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Login and user registration for Okay Bloomer</title>
+    <link rel="stylesheet" href="{{url_for ('static', filename='user_plant_profile.css') }}">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
+                <li><a href="{{ url_for('views.about_us') }}">About</a></li>
+                <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
+                {% if session.get('logged_in') %}
+                    <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
+                    <li class="right">Hello {{ session.get('bloomerUser') }} </li>
+                    <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
+                    <li class="right"><a href="{{ url_for('auth.login_page') }}">Login/Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div class="wrapper-alert">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes" id="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}" data-message="{{ message }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    </div>
+
+    <script src="{{url_for ('static', filename='user_plant_profile.js')}}"></script>
+</body>
+</html>
