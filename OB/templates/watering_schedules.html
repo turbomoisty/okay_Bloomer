@@ -14,9 +14,9 @@
                 <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
                 <li><a href="{{ url_for('views.about_us') }}">About</a></li>
                 <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
-                {% if session.get('logged_in') %}
+                {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
-                    <li style="color:#85FF00;"> Hello {{ session.get('bloomerUser') }}! </li>
+                    <li style="color:#85FF00;">Hello {{ current_user.userName }}! </li>
                     <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
@@ -27,27 +27,22 @@
     </header>
 
     <div class="container">
-<!--   Do you still need this here?????-->
-<!--        {% with messages = get_flashed_messages(with_categories=true) %}-->
-<!--            {% if messages %}-->
-<!--                {% for category, message in messages %}-->
-<!--                    <div class="alert alert-{{ category }}">{{ message }}</div>-->
-<!--                {% endfor %}-->
-<!--            {% endif %}-->
-<!--        {% endwith %}-->
         <section class="profile">
             <div class="user-info">
-                {%if session.get('logged_in') %}
-                <h2>{{session.get('bloomerUser')}}'s Plant page</h2>
+                {%if current_user.is_authenticated %}
+                <h2>{{ current_user.userName }}'s Plant page</h2>
                 {% endif %}
                 <p style="color:#fff;">Welcome to your plant care profile!</p>
             </div>
             <div class="plant-info">
                 <h3>Selected Plants</h3>
                 <ul id="plant-list">
+                    {% for plant in plant %}
+                    <li>{{plant.plantName}} - Schedule: {{ plant.waterDate }} days </li>
+                    {% endfor %}
 
                 </ul>
-                <form action="/add-plant" method="post">
+                <form action="{{url_for('views.add_plant') }}" method="post">
                     <input type="text" name="plant_name" placeholder="Add your plant!" required>
                     <button class="add-plant">Add Plant</button>
                 </form>
@@ -56,9 +51,12 @@
         <section class="watering-schedule">
             <h3>Watering Schedule</h3>
             <ul id="scheduling-list">
+                {% for plant in plant %}
+                    <li>{{plant.plantName}} - Your next watering {{ plant.waterDate }} days </li>
+                {% endfor %}
 
             </ul>
-            <form action ="/add-schedule" method="post">
+            <form action ="{{url_for('views.add_schedule') }}" method="post">
                 <input type="text" name="plant_name" placeholder="Your plant name" required>
                 <input type="text" name="scheduling_interval" placeholder="Your watering schedule" required>
 
@@ -69,9 +67,12 @@
         <section class="comment-log">
             <h3>Comment Log</h3>
             <ul id="comment-list">
+                {% for comment in comment %}
+                <li>{{ comment.commentText }} - {{ comment.timestamp }}</li>
+                {% endfor %}
 
             </ul>
-            <form action="/comment-form" method="post" class="comment-form">
+            <form action="{{ url_for('views.add_comments') }}" method="post" class="comment-form">
                 <textarea name = "comment" placeholder="Add a comment..." required></textarea>
                 <button type="submit">Post Comment</button>
             </form>
@@ -87,29 +88,5 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

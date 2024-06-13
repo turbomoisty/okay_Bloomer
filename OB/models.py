@@ -1,14 +1,12 @@
-import datetime
-from flask_sqlalchemy import SQLAlchemy
+
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
-db = SQLAlchemy()
+from . import db
 
 
 #####GO THROUGH THE MODEL TO DOUBLE CHECK#######
-class bloomerUser(db.Model,UserMixin):
-    __tableName__ = 'bloomer_user'
+class bloomerUser(db.Model, UserMixin):
+    __tablename__ = 'bloomer_user'
     id = db.Column(db.Integer, primary_key=True)
     userName = db.Column(db.String(10), index=True, unique=True)
     userEmail = db.Column(db.String(20), index=True, unique=True)
@@ -30,11 +28,15 @@ class bloomerUser(db.Model,UserMixin):
     def check_password(self, password):
         return check_password_hash(self.userPassword, password)
 
+    def __init__(self, userName, userEmail):
+        self.userName = userName
+        self.userEmail = userEmail
+
 
 class journalEntry(db.Model):
     __tablename__ = 'journal_entry'
     id = db.Column(db.Integer, primary_key=True)
-    journal_title = db.Column(db.String(20),nullable=False)
+    journal_title = db.Column(db.String(20), nullable=False)
     journalEntry = db.Column(db.String(200), nullable=False, unique=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('bloomer_user.id'))
@@ -66,7 +68,6 @@ class Plant(db.Model):
     plantJournalEntry = db.relationship('journalEntry', backref='plantEntry', lazy=True)
 
 
-
 # In regard to waterDate we will be also looking into how implement it as a calendar not add it in manually
 
 
@@ -87,4 +88,3 @@ class plantType(db.Model):
     plantDescription = db.Column(db.String(280), nullable=False)
 
     plants = db.relationship('Plant', backref='plantTypeToPlant', lazy=True)
-

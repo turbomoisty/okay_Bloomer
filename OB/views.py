@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, url_for, session, redirect
-from flask_login import login_user, login_required, logout_user, current_user
-from .models import bloomerUser, journalEntry, Plant, userComment, db
+from flask_login import login_user, login_required, current_user
+from .models import Plant, userComment
+from . import db
 
 views = Blueprint('views', __name__)
 
@@ -38,8 +39,8 @@ def plant_profiles():
 @login_required
 def watering_schedules():
     plant = Plant.query.filter_by(user_id=current_user.id).all()
-    comment = userComment.query.filter_by(user_id=current_user.id).all()
-    return render_template('watering_schedules.html', plant=plant, comment=comment, username=current_user.userName)
+    comments = userComment.query.filter_by(user_id=current_user.id).all()
+    return render_template('watering_schedules.html', plant=plant, comments=comments, username=current_user.userName)
 
 
 # forms: add-plant, add-schedule, comment-form, image-upload(I still don't know how to add images)
@@ -48,10 +49,11 @@ def watering_schedules():
 @login_required
 def add_plant():
     plant_name = request.form.get('plant_name')
-    new_plant = Plant(name=plant_name, scheduling_interval=2, user_id=current_user.id)
+    new_plant = Plant(plantName=plant_name, waterDate=2, user_id=current_user.id)
     db.session.add(new_plant)
     db.session.commit()
     return redirect(url_for('views.watering_schedules'))
+
 
 ##double check to see if all objects are named consistently.
 @views.route('/add-schedule', methods=['POST'])
@@ -66,14 +68,20 @@ def add_schedule():
         return redirect(url_for('views.watering_schedules'))
 
 
-@views.route('comment-form', methods=['POST'])
+@views.route('/comment-form', methods=['POST'])
 @login_required
 def add_comments():
-    comment = request.form.get('comment')
-    adding_comment = userComment(comment=comment, user_id=current_user.id)
-    db.session.add(adding_comment)
-    db.session.commit()
+
+    comment_text = request.form.get('comment')
+    if comment_text:
+        adding_comment = userComment(commentText=comment_text, user_id=current_user.id)
+        db.session.add(adding_comment)
+        db.session.commit()
     return redirect(url_for('views.watering_schedules'))
+
+@views.route('/under_construction')
+def under_construction():
+    return render_template('under_construction.html')
 
 
 # @views.route('/plant_journal', methods=['POST', 'GET'])
@@ -83,8 +91,3 @@ def add_comments():
 #             journalTextPath = request.form['journal_text_entry']
 #
 #     return render_template('plant_journal.html')
-
-
-@views.route('/under_construction')
-def under_construction():
-    return render_template('under_construction.html')
