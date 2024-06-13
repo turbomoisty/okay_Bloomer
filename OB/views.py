@@ -53,7 +53,7 @@ def add_plant():
     db.session.commit()
     return redirect(url_for('views.watering_schedules'))
 
-
+##double check to see if all objects are named consistently.
 @views.route('/add-schedule', methods=['POST'])
 @login_required
 def add_schedule():

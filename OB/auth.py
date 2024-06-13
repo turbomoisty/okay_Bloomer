@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from werkzeug.security import check_password_hash, generate_password_hash
-from flask_login import login_user
+from werkzeug.security import check_password_hash
+
 
 from .models import bloomerUser, db
 
@@ -44,7 +44,7 @@ def login_page():
                 elif existing_name:
                     flash("This username already exists!", "error")
                 else:
-
+                    #I dont know why it says unexpected argument, but removing them breaks the code, so dont.
                     new_user = bloomerUser(userName=username, userEmail=email)
                     new_user.password = password
                     db.session.add(new_user)

@@ -27,13 +27,14 @@
     </header>
 
     <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+<!--   Do you still need this here?????-->
+<!--        {% with messages = get_flashed_messages(with_categories=true) %}-->
+<!--            {% if messages %}-->
+<!--                {% for category, message in messages %}-->
+<!--                    <div class="alert alert-{{ category }}">{{ message }}</div>-->
+<!--                {% endfor %}-->
+<!--            {% endif %}-->
+<!--        {% endwith %}-->
         <section class="profile">
             <div class="user-info">
                 {%if session.get('logged_in') %}
@@ -75,6 +76,7 @@
                 <button type="submit">Post Comment</button>
             </form>
         </section>
+            <!-- Work on images last, since that'll probably take a while-->
         <section class="image-upload">
             <h3>Image Upload</h3>
             <form class="upload-form">
