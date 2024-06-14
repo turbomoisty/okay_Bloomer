@@ -25,7 +25,7 @@
             </ul>
         </nav>
     </header>
-       <!--There's a bug that causes message 'login in successful' to flash after loging out.  figure out why later.-->
+       <!--ABIGAIL MUST DO: here's a bug that causes message 'login in successful' to flash after loging out.  figure out why later.-->
 
    <div class="wrapper-alert">
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -75,7 +75,7 @@
                     <label for="userName">Username</label>
                 </div>
                 <div class="input-group">
-                    <input type="email" name="userEmail" pattern="[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}" required/>
+                    <input type="email" name="userEmail" required/>
                     <label for="userEmail">Email</label>
                 </div>
                 <div class="input-group">

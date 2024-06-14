@@ -1,3 +1,5 @@
+import re
+
 from flask import Blueprint, request, redirect, url_for, flash, session, render_template, current_app
 from werkzeug.security import check_password_hash
 from .models import bloomerUser, db
@@ -34,6 +36,9 @@ def login_page():
             if not username or not password or not email:
                 flash("Please ensure all fields are filled", 'error')
             else:
+                # email_validation = 'r[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}'
+                # if re.match(email_validation):
+
                 existing_mail = bloomerUser.query.filter_by(userEmail=email).first()
                 existing_name = bloomerUser.query.filter_by(userName=username).first()
                 if existing_mail:
@@ -48,6 +53,7 @@ def login_page():
                     db.session.commit()
                     flash('Sign up successful! Please log in.', 'success')
                     return redirect(url_for('auth.login_page'))
+                #else:
 
     return render_template('login_page.html')
 

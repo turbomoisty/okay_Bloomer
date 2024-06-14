@@ -67,10 +67,15 @@
         <section class="comment-log">
             <h3>Comment Log</h3>
             <ul id="comment-list">
-                {% for comment in comment %}
-                <li>{{ comment.commentText }} - {{ comment.timestamp }}</li>
-                {% endfor %}
-
+                {% if not comments %}
+                    <h1>No comments! Start adding something!</h1>
+                {% else %}
+                    <ul>
+                        {% for comment in comments %}
+                            <li>{{ comment.commentText }} - {{ comment.timestamp }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </ul>
             <form action="{{ url_for('views.add_comments') }}" method="post" class="comment-form">
                 <textarea name = "comment" placeholder="Add a comment..." required></textarea>
