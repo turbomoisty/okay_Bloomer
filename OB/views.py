@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, url_for, session, redirect
 from flask_login import login_user, login_required, current_user
-from .models import Plant, userComment
+from .models import Plant, userComment, plantType
 from . import db
 
 views = Blueprint('views', __name__)
@@ -38,9 +38,10 @@ def plant_profiles():
 @views.route('/watering_schedules')
 @login_required
 def watering_schedules():
-    plant = Plant.query.filter_by(user_id=current_user.id).all()
+    plants = Plant.query.filter_by(user_id=current_user.id).all()
     comments = userComment.query.filter_by(user_id=current_user.id).all()
-    return render_template('watering_schedules.html', plant=plant, comments=comments, username=current_user.userName)
+    plant_types = plantType.query.all()
+    return render_template('watering_schedules.html', plants=plants, comments=comments, plant_types=plant_types, username=current_user.userName)
 
 
 # forms: add-plant, add-schedule, comment-form, image-upload(I still don't know how to add images)
@@ -49,9 +50,11 @@ def watering_schedules():
 @login_required
 def add_plant():
     plant_name = request.form.get('plant_name')
-    new_plant = Plant(plantName=plant_name, waterDate=2, user_id=current_user.id)
-    db.session.add(new_plant)
-    db.session.commit()
+    plant_type = request.form.get('plant_type')
+    if plant_name and plant_type:
+        new_plant = Plant(plantName=plant_name, waterDate=2,  plant_id=plant_type, user_id=current_user.id)
+        db.session.add(new_plant)
+        db.session.commit()
     return redirect(url_for('views.watering_schedules'))
 
 
@@ -61,9 +64,9 @@ def add_plant():
 def add_schedule():
     plant_name = request.form.get('plant_name')
     schedule = int(request.form.get('add_schedule'))
-    plant = Plant.query.filter_by(name=plant_name, user_id=current_user.id).first()
+    plant = Plant.query.filter_by(plantName=plant_name, user_id=current_user.id).first()
     if plant:
-        plant.add_schedule = schedule
+        plant.waterDate = schedule
         db.session.commit()
         return redirect(url_for('views.watering_schedules'))
 
@@ -82,12 +85,3 @@ def add_comments():
 @views.route('/under_construction')
 def under_construction():
     return render_template('under_construction.html')
-
-
-# @views.route('/plant_journal', methods=['POST', 'GET'])
-# def plant_journal():
-#     if session.get == 'logged_in':
-#         if request.method == 'POST':
-#             journalTextPath = request.form['journal_text_entry']
-#
-#     return render_template('plant_journal.html')

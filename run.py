@@ -1,4 +1,4 @@
-from OB import create_site, db
+from OB import create_site
 
 app = create_site()
 

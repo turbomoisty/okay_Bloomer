@@ -1,4 +1,3 @@
-
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from . import db
@@ -59,9 +58,9 @@ class userCommunityPost(db.Model):
 # We specifically chose 39 characters for the plantType_id is because the longest plant name is 39 letters
 class Plant(db.Model):
     __tablename__ = 'plant'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     plantName = db.Column(db.String(15), nullable=False)
-    plantType = db.Column(db.String(39), index=False, unique=False)
+    # plantType = db.Column(db.String(39), index=False, unique=False)
     waterDate = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('bloomer_user.id'), nullable=False)
     plant_id = db.Column(db.Integer, db.ForeignKey('plant_type.id'), nullable=False)
@@ -84,7 +83,6 @@ class userComment(db.Model):
 class plantType(db.Model):
     __tablename__ = 'plant_type'
     id = db.Column(db.Integer, primary_key=True)
-    plantSpecies = db.Column(db.String(39), unique=True, nullable=False)
-    plantDescription = db.Column(db.String(280), nullable=False)
+    typeName = db.Column(db.String(39), nullable=False)
 
     plants = db.relationship('Plant', backref='plantTypeToPlant', lazy=True)

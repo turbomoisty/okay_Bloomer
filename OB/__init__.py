@@ -17,6 +17,7 @@ def create_site():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///myPlantDB.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
     db.init_app(app)
 
     login_manger.login_view = 'auth.login_page'

@@ -37,23 +37,41 @@
             <div class="plant-info">
                 <h3>Selected Plants</h3>
                 <ul id="plant-list">
-                    {% for plant in plant %}
+                    {% if not plants %}
+                <h1> You have no plants yet! </h1>
+                    {% else %}
+                    <ul>
+                    {% for plant in plants %}
                     <li>{{plant.plantName}} - Schedule: {{ plant.waterDate }} days </li>
-                    {% endfor %}
-
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </ul>
-                <form action="{{url_for('views.add_plant') }}" method="post">
+                <form action="{{url_for('views.add_plant') }}" method="post" class="add-plant">
                     <input type="text" name="plant_name" placeholder="Add your plant!" required>
-                    <button class="add-plant">Add Plant</button>
+                    <select name="plant_type" required>
+                        <option value="" disabled selected>Select plant type</option>
+                    {% for plant_type in plant_types %}
+                        <option value="{{ plant_type.id }}">{{ plant_type.typeName }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Add plant</button>
                 </form>
             </div>
         </section>
         <section class="watering-schedule">
             <h3>Watering Schedule</h3>
             <ul id="scheduling-list">
-                {% for plant in plant %}
-                    <li>{{plant.plantName}} - Your next watering {{ plant.waterDate }} days </li>
-                {% endfor %}
+                {% if not plant %}
+                <h1> No plants here! </h1>
+                    {% else %}
+                        <ul>
+                        {% for plant in plant %}
+                            <li>{{plant.plantName}} - Your next watering {{ plant.waterDate }} days </li>
+                        {% endfor %}
+
+                        </ul>
+                    {% endif %}
 
             </ul>
             <form action ="{{url_for('views.add_schedule') }}" method="post">
