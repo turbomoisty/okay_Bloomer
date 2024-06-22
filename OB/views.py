@@ -7,8 +7,8 @@ views = Blueprint('views', __name__)
 
 
 @views.route('/')  # Same routing for displaying the main page
-@views.route(
-    '/main_page')  # app decorator for index route so the browser doesn't shit itself when trying to access files
+@views.route('/main_page')
+# app decorator for index route so the browser doesn't shit itself when trying to access files
 # Don't forget to add the url string parameter for the route.
 def main_page():
     return render_template('main_page.html')
@@ -41,7 +41,8 @@ def watering_schedules():
     plants = Plant.query.filter_by(user_id=current_user.id).all()
     comments = userComment.query.filter_by(user_id=current_user.id).all()
     plant_types = plantType.query.all()
-    return render_template('watering_schedules.html', plants=plants, comments=comments, plant_types=plant_types, username=current_user.userName)
+    return render_template('watering_schedules.html', plants=plants, comments=comments, plant_types=plant_types,
+                           username=current_user.userName)
 
 
 # forms: add-plant, add-schedule, comment-form, image-upload(I still don't know how to add images)
@@ -52,7 +53,7 @@ def add_plant():
     plant_name = request.form.get('plant_name')
     plant_type = request.form.get('plant_type')
     if plant_name and plant_type:
-        new_plant = Plant(plantName=plant_name, waterDate=2,  plant_id=plant_type, user_id=current_user.id)
+        new_plant = Plant(plantName=plant_name, waterDate=2, plant_id=plant_type, user_id=current_user.id)
         db.session.add(new_plant)
         db.session.commit()
     return redirect(url_for('views.watering_schedules'))
@@ -74,13 +75,13 @@ def add_schedule():
 @views.route('/comment-form', methods=['POST'])
 @login_required
 def add_comments():
-
     comment_text = request.form.get('comment')
     if comment_text:
         adding_comment = userComment(commentText=comment_text, user_id=current_user.id)
         db.session.add(adding_comment)
         db.session.commit()
     return redirect(url_for('views.watering_schedules'))
+
 
 @views.route('/under_construction')
 def under_construction():
