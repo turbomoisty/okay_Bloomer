@@ -1,11 +1,14 @@
 from flask import Blueprint, render_template, request, url_for, session, redirect
+from flask_login import login_user, login_required, current_user
+from .models import Plant, userComment, plantType
+from . import db
 
 views = Blueprint('views', __name__)
 
 
-#@views.route('/')  # Same routing for displaying the main page
-@views.route(
-    '/main_page')  # app decorator for index route so the browser doesn't shit itself when trying to access files
+@views.route('/')  # Same routing for displaying the main page
+@views.route('/main_page')
+# app decorator for index route so the browser doesn't shit itself when trying to access files
 # Don't forget to add the url string parameter for the route.
 def main_page():
     return render_template('main_page.html')
@@ -16,7 +19,7 @@ def main_page():
 def about_us():
     return render_template('about_us.html')
 
-@views.route('/')
+
 @views.route('/rewards')
 def rewards():
     return render_template('rewards.html')
@@ -32,23 +35,52 @@ def plant_profiles():
     return render_template('plant_profiles.html')
 
 
-# @views.route('/')
 @views.route('/watering_schedules')
+@login_required
 def watering_schedules():
-    # if not session.get('logged_in'):
-    #     flash("Please log in to access these features")
-    #     return redirect(url_for('auth.login_page'))
-    return render_template('watering_schedules.html')
+    plants = Plant.query.filter_by(user_id=current_user.id).all()
+    comments = userComment.query.filter_by(user_id=current_user.id).all()
+    plant_types = plantType.query.all()
+    return render_template('watering_schedules.html', plants=plants, comments=comments, plant_types=plant_types,
+                           username=current_user.userName)
 
 
-# @views.route('/')
-@views.route('/plant_journal', methods=['POST', 'GET'])
-def plant_journal():
-    if session.get == 'logged_in':
-        if request.method == 'POST':
-            journalTextPath = request.form['journal_text_entry']
+# forms: add-plant, add-schedule, comment-form, image-upload(I still don't know how to add images)
 
-    return render_template('plant_journal.html')
+@views.route('/add-plant', methods=['POST'])
+@login_required
+def add_plant():
+    plant_name = request.form.get('plant_name')
+    plant_type = request.form.get('plant_type')
+    if plant_name and plant_type:
+        new_plant = Plant(plantName=plant_name, waterDate=2, plant_id=plant_type, user_id=current_user.id)
+        db.session.add(new_plant)
+        db.session.commit()
+    return redirect(url_for('views.watering_schedules'))
+
+
+##double check to see if all objects are named consistently.
+@views.route('/add-schedule', methods=['POST'])
+@login_required
+def add_schedule():
+    plant_name = request.form.get('plant_name')
+    schedule = int(request.form.get('add_schedule'))
+    plant = Plant.query.filter_by(plantName=plant_name, user_id=current_user.id).first()
+    if plant:
+        plant.waterDate = schedule
+        db.session.commit()
+        return redirect(url_for('views.watering_schedules'))
+
+
+@views.route('/comment-form', methods=['POST'])
+@login_required
+def add_comments():
+    comment_text = request.form.get('comment')
+    if comment_text:
+        adding_comment = userComment(commentText=comment_text, user_id=current_user.id)
+        db.session.add(adding_comment)
+        db.session.commit()
+    return redirect(url_for('views.watering_schedules'))
 
 
 @views.route('/under_construction')

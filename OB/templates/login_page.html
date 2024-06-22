@@ -14,9 +14,9 @@
                 <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
                 <li><a href="{{ url_for('views.about_us') }}">About</a></li>
                 <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
-                {% if session.get('logged_in') %}
+                {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
-                    <li class="right">Hello {{ session.get('bloomerUser') }} </li>
+                    <li style="color:#85FF00;">Hello {{ current_user.userName }}! </li>
                     <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
@@ -25,7 +25,9 @@
             </ul>
         </nav>
     </header>
-    <div class="wrapper-alert">
+       <!--ABIGAIL MUST DO: here's a bug that causes message 'login in successful' to flash after loging out.  figure out why later.-->
+
+   <div class="wrapper-alert">
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <ul class="flashes" id="flashes">
@@ -73,7 +75,7 @@
                     <label for="userName">Username</label>
                 </div>
                 <div class="input-group">
-                    <input type="email" name="userEmail" pattern="[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}" required/>
+                    <input type="email" name="userEmail" required/>
                     <label for="userEmail">Email</label>
                 </div>
                 <div class="input-group">

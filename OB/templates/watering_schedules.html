@@ -14,9 +14,9 @@
                 <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
                 <li><a href="{{ url_for('views.about_us') }}">About</a></li>
                 <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
-                {% if session.get('logged_in') %}
+                {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
-                    <li class="right">Hello {{ session.get('bloomerUser') }} </li>
+                    <li style="color:#85FF00;">Hello {{ current_user.userName }}! </li>
                     <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
@@ -25,47 +25,82 @@
             </ul>
         </nav>
     </header>
+
     <div class="container">
-        <header>
-            {%if session.get('logged_in') %}
-            <h2>{{session.get('bloomerUser')}}'s Plant profile</h2>
-            {% endif %}
-        </header>
         <section class="profile">
             <div class="user-info">
-                <h2>User Name</h2>
-                <p>Welcome to your plant care profile!</p>
+                {%if current_user.is_authenticated %}
+                <h2>{{ current_user.userName }}'s Plant page</h2>
+                {% endif %}
+                <p style="color:#fff;">Welcome to your plant care profile!</p>
             </div>
             <div class="plant-info">
                 <h3>Selected Plants</h3>
-                <ul>
-                    <li>Plant 1</li>
-                    <li>Plant 2</li>
-                    <li>Plant 3</li>
+                <ul id="plant-list">
+                    {% if not plants %}
+                <h1> You have no plants yet! </h1>
+                    {% else %}
+                    <ul>
+                    {% for plant in plants %}
+                    <li>{{plant.plantName}} - Schedule: {{ plant.waterDate }} days </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </ul>
-                <button class="add-plant">Add Plant</button>
+                <form action="{{url_for('views.add_plant') }}" method="post" class="add-plant">
+                    <input type="text" name="plant_name" placeholder="Add your plant!" required>
+                    <select name="plant_type" required>
+                        <option value="" disabled selected>Select plant type</option>
+                    {% for plant_type in plant_types %}
+                        <option value="{{ plant_type.id }}">{{ plant_type.typeName }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Add plant</button>
+                </form>
             </div>
         </section>
         <section class="watering-schedule">
             <h3>Watering Schedule</h3>
-            <ul>
-                <li>Plant 1: Every 3 days</li>
-                <li>Plant 2: Every 5 days</li>
-                <li>Plant 3: Every 7 days</li>
+            <ul id="scheduling-list">
+                {% if not plant %}
+                <h1> No plants here! </h1>
+                    {% else %}
+                        <ul>
+                        {% for plant in plant %}
+                            <li>{{plant.plantName}} - Your next watering {{ plant.waterDate }} days </li>
+                        {% endfor %}
+
+                        </ul>
+                    {% endif %}
+
             </ul>
-            <button class="update-schedule">Update Schedule</button>
+            <form action ="{{url_for('views.add_schedule') }}" method="post">
+                <input type="text" name="plant_name" placeholder="Your plant name" required>
+                <input type="text" name="scheduling_interval" placeholder="Your watering schedule" required>
+
+                <button class="update-schedule">Update Schedule</button>
+            </form>
+
         </section>
         <section class="comment-log">
             <h3>Comment Log</h3>
-            <ul>
-                <li>Log Entry 1: Watered Plant 1 today.</li>
-                <li>Log Entry 2: Plant 2 looks healthier.</li>
+            <ul id="comment-list">
+                {% if not comments %}
+                    <h1>No comments! Start adding something!</h1>
+                {% else %}
+                    <ul>
+                        {% for comment in comments %}
+                            <li>{{ comment.commentText }} - {{ comment.timestamp }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </ul>
-            <form class="comment-form">
-                <textarea placeholder="Add a comment..."></textarea>
+            <form action="{{ url_for('views.add_comments') }}" method="post" class="comment-form">
+                <textarea name = "comment" placeholder="Add a comment..." required></textarea>
                 <button type="submit">Post Comment</button>
             </form>
         </section>
+            <!-- Work on images last, since that'll probably take a while-->
         <section class="image-upload">
             <h3>Image Upload</h3>
             <form class="upload-form">
@@ -76,29 +111,5 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
