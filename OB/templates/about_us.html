@@ -18,10 +18,12 @@
                 <li><a href="{{url_for('views.about_us')}}" data-text="About">About</a></li>
                 <li><a href="" data-text="Care Tips">Care Tips</a></li>
                 <li><a href="" data-text="Services">Services</a></li>
-                {% if session.get('logged_in') %}
+                {% if current_user.is_authenticated %}
+                    <li> <a href="{{ url_for (views.watering_schedules.html)}}" data-text="Your Schedules"></a> </li>
                     <li class="user-info">Hello {{ session.get('bloomerUser') }}!</li>
                     <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
                 {% else %}
+                    <li> <a href="{{url_for('views.rewards') }}" data-text="Your Schedules">Your Schedules</a></li>
                     <li><a href="{{url_for('auth.login_page')}}" data-text="Login/Sign Up">Login/Sign Up</a></li>
                 {% endif %}
             </ul>
