@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to dynamically set the height of the header
   const header = document.querySelector("header");
   const bgImage = new Image();
-  bgImage.src = "/static/images/obhomepage3.jpg"; // Adjust the path if necessary
+  bgImage.src = ""; // Adjust the path if necessary
 
   bgImage.onload = function() {
       const aspectRatio = bgImage.height / bgImage.width;
