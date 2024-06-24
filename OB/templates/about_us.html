@@ -10,17 +10,19 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
-                <li><a href="{{ url_for('views.about_us') }}">About</a></li>
-                <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
-                {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
-                    <li style="color:#85FF00;">Hello {{ current_user.userName }}! </li>
-                    <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
+            <ul class="nav-left">
+                <li class="nav-name"><a class="no-underline no-color-change special-font" href="{{url_for('views.main_page')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li><a href="{{ url_for('views.main_page') }}" data-text="Home">Home</a></li>
+                <li><a href="{{url_for('views.about_us')}}" data-text="About">About</a></li>
+                <li><a href="" data-text="Care Tips">Care Tips</a></li>
+                <li><a href="" data-text="Services">Services</a></li>
+                {% if session.get('logged_in') %}
+                    <li class="user-info">Hello {{ session.get('bloomerUser') }}!</li>
+                    <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
                 {% else %}
-                    <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
-                    <li class="right"><a href="{{ url_for('auth.login_page') }}">Login/Sign Up</a></li>
+                    <li><a href="{{url_for('auth.login_page')}}" data-text="Login/Sign Up">Login/Sign Up</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -62,4 +64,5 @@
     </section>
 
 </body>
+    <script src="{{ url_for('static', filename='about_us.js')}}"></script>
 </html>

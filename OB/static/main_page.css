@@ -22,7 +22,7 @@ header {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    height: 60vh; /* Adjust height as needed */
+    height: 100vh; /* Adjust height as needed */
 }
 
 header::before {
@@ -162,36 +162,39 @@ main {
 }
 
 .services {
-    background-color: RGB(16, 51, 31);
-    color: rgba(255, 255, 255);
-    width: 100%;
-    padding: 20px;
-    height: auto;
+    background-color: RGB(16, 51, 31); /* Background color for the services section */
+    color: rgba(255, 255, 255); /* Text color for the services section */
+    width: 100%; /* Full width */
+    padding: 20px; /* Add padding */
+    text-align: center; /* Center text */
 }
 
 .services-title {
     font-size: 2.5em; /* Adjust to be responsive */
     font-family: 'Canela-Regular', serif;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     font-weight: normal;
     padding: 0 20px;
-    margin-top: -30px;
+    margin-top: -10px;
 }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 40px;
-    max-width: 1200px;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: center; /* Center items horizontally */
+    gap: 20px; /* Space between items */
     padding: 0 20px;
-    margin-left: 115px;
 }
 
 .service-block {
     background-color: transparent;
     padding: 20px;
     position: relative;
+    width: calc(33.333% - 40px); /* Adjust for 3 items per row with gap */
+    max-width: 300px; /* Optional: set a max-width */
+    box-sizing: border-box;
+    text-align: center; /* Center text */
+    margin: 20px; /* Space around items */
 }
 
 .service-block h3 {
@@ -206,7 +209,9 @@ main {
     font-family: 'Courier New', sans-serif;
     line-height: 1.5;
     font-weight: normal;
+    margin: 0; /* Remove default margins */
 }
+
 
 .service-block::after {
     content: "";
@@ -318,14 +323,14 @@ main {
     background-color: transparent;
     display: flex;
     justify-content: center;
-    position: relative;
+    position: relative; /* Remove any bottom margin to decrease gap */
 }
 
 .marquee, .marquee-reverse {
     display: inline-block;
     white-space: nowrap;
     box-sizing: border-box;
-    animation: marquee 5s linear infinite alternate;
+    animation: marquee 40s linear infinite; /* Increased duration for slower animation */
     font-size: 4vw; /* Adjust to be responsive */
     color: rgba(0, 0, 0);
     width: 100%;
@@ -333,25 +338,28 @@ main {
 
 @keyframes marquee {
     0% {
-        transform: translateX(-20%);
+        transform: translateX(100%);
     }
     100% {
-        transform: translateX(calc(80vw - 80%));
+        transform: translateX(-100%);
     }
 }
 
 @keyframes marquee-reverse {
     0% {
-        transform: translateX(calc(80vw - 80%));
+        transform: translateX(-100%);
     }
     100% {
-        transform: translateX(-20%);
+        transform: translateX(100%);
     }
+}
+
+.marquee-reverse {
+    animation: marquee-reverse 30s linear infinite; /* Use a separate animation for reverse */
 }
 
 footer {
     background-color: rgba(0, 0, 0, 0.85);
-    padding: 20px 40px;
     width: 100%;
     text-align: center;
     color: white;
@@ -371,7 +379,7 @@ footer {
 }
 
 .footer-logo img {
-    width: 250px;
+    width: 200px;
     height: auto;
 }
 
@@ -406,32 +414,32 @@ footer {
 
 .footer-bottom {
     font-family: 'Canela-Regular', serif;
-    font-size: 1em; /* Adjusted font size */
+    font-size: 1em;
 }
 
 .footer-end {
+    width: 100%;
     border-top: 1px solid white;
     padding-top: 10px;
     margin-top: 20px;
     font-size: 1.2em;
     font-family: 'Canela-Regular', serif;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .footer-end p {
     margin: 10px 0;
-    font-size: 1em; /* Adjusted font size */
+    font-size: 11.5em;
 }
 
 .line-in-middle {
     width: 100%;
-    max-width: 1200px;
     height: 1px;
-    background: linear-gradient(to right, transparent 0%, transparent calc(50% - 0.81px), white calc(50% - 0.8px), white calc(50% + 0.8px), transparent calc(50% + 0.81px), transparent 100%);
     margin: 20px auto;
+    box-sizing: border-box;
 }
 
 .scrolled {
