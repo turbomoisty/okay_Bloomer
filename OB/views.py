@@ -6,7 +6,13 @@ from . import db
 views = Blueprint('views', __name__)
 
 
-@views.route('/')  # Same routing for displaying the main page
+@views.route('/')
+@views.route('/comments_board')
+def comments_board():
+    return render_template('comments_board.html')
+
+
+# @views.route('/')  # Same routing for displaying the main page
 @views.route('/main_page')
 # app decorator for index route so the browser doesn't shit itself when trying to access files
 # Don't forget to add the url string parameter for the route.
