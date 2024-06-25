@@ -1,15 +1,9 @@
 from flask import Blueprint, render_template, request, url_for, session, redirect
 from flask_login import login_user, login_required, current_user
-from .models import Plant, userComment, plantType
+from .models import Plant, userComment, plantType, userPost
 from . import db
 
 views = Blueprint('views', __name__)
-
-
-@views.route('/')
-@views.route('/comments_board')
-def comments_board():
-    return render_template('comments_board.html')
 
 
 # @views.route('/')  # Same routing for displaying the main page
@@ -92,3 +86,39 @@ def add_comments():
 @views.route('/under_construction')
 def under_construction():
     return render_template('under_construction.html')
+
+
+@views.route('/')
+@views.route('/comment_board')
+def comments_board():
+    posts = userPost.query.all()
+    return render_template('comment_board.html', posts=posts)
+
+
+@views.route('/create_post', methods=['GET', 'POST'])
+@login_required
+def create_post():
+    if request.method == 'POST':
+        title = request.form.get('title')
+        text = request.form.get('content')
+        if title and text:
+            new_post = userPost(PostTitle=title, PostText=text, user_id=current_user.id)
+            db.session.add(new_post)
+            db.session.commit()
+            return redirect(url_for('views.comment_board'))
+    return render_template('create_post.html')
+
+
+@views.route('/post/<int:post_id>', methods=['GET', "POST"])
+@login_required
+def view_post(post_id):
+    post = userPost.query.get_or_404(post_id)
+    if request.method == 'POST':
+        reply = request.form.get('reply')
+        if reply:
+            new_comment = userComment(commentText=reply, post_id=post_id, user_id=current_user.id)
+            db.session.add(new_comment)
+            db.session.commit()
+            return redirect(url_for('views.view_post', post_id=post_id))
+        comment = userComment.query.filter_by(post_id=post_id).all()
+        return render_template('view_post', post=post, comment=comment)

@@ -1,60 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalistic Forum Board</title>
-    <link rel="stylesheet" href="{{url_for ('static', filename='about_us.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Forum Board</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends 'base.html' %}
 
-    <main>
+{% block title %}Forum Board{% endblock %}
+
+{% block content %}
+    {% if view == 'create_post' %}
         <section class="post-creation">
             <h2>Create a Post</h2>
-            <form>
-                <input type="text" placeholder="Post Title" required>
-                <textarea placeholder="Write your post here..." required></textarea>
+            <form method="POST" action="{{ url_for('views.create_post') }}">
+                <input type="text" name="title" placeholder="Post Title" required>
+                <textarea name="body" placeholder="Write your post here..." required></textarea>
                 <button type="submit">Post</button>
             </form>
         </section>
-
+    {% elif view == 'forum' %}
         <section class="posts">
-            <article class="post">
-                <h2>Post Title</h2>
-                <p class="post-body">This is a sample post content...</p>
-                <div class="comments">
-                    <h3>Comments</h3>
-                    <div class="comment">
-                        <p>This is a comment...</p>
-                        <button class="reply">Reply</button>
-                        <div class="replies">
-                            <div class="reply">
-                                <p>This is a reply...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <form class="comment-form">
-                        <textarea placeholder="Write a comment..." required></textarea>
-                        <button type="submit">Comment</button>
-                    </form>
-                </div>
-            </article>
+            {% if posts %}
+                {% for post in posts %}
+                    <article class="post">
+                        <h2><a href="{{ url_for('views.view_post', post_id=post.id) }}">{{ post.PostTitle if post.PostTitle else 'Untitled Post' }}</a></h2>
+                        <p>{{ post.postText[:100] if post.postText else 'No content available...' }}...</p>
+                        <p><small>Posted by {{ post.originalPoster.userName if post.originalPoster else 'Unknown' }} on {{ post.timestamp if post.timestamp else 'Unknown date' }}</small></p>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>No posts to display</p>
+            {% endif %}
         </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Forum Board. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+    {% elif view == 'view_post' %}
+        <article class="post">
+            <h2>{{ post.PostTitle if post.PostTitle else 'Untitled Post' }}</h2>
+            <p>{{ post.postText if post.postText else 'No content available...' }}</p>
+            <p><small>Posted by {{ post.originalPoster.userName if post.originalPoster else 'Unknown' }} on {{ post.timestamp if post.timestamp else 'Unknown date' }}</small></p>
+        </article>
+        <section class="comments">
+            <h3>Comments</h3>
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="comment">
+                        <p>{{ comment.commentText if comment.commentText else 'No comment text available...' }}</p>
+                        <p><small>Commented by {{ comment.obComments.userName if comment.obComments else 'Unknown' }} on {{ comment.timestamp if comment.timestamp else 'Unknown date' }}</small></p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No comments to display</p>
+            {% endif %}
+        </section>
+        <section class="add-comment">
+            <h3>Add a Comment</h3>
+            <form method="POST" action="{{ url_for('views.view_post', post_id=post.id) }}">
+                <textarea name="comment" placeholder="Write your comment here..." required></textarea>
+                <button type="submit">Comment</button>
+            </form>
+        </section>
+    {% else %}
+        <p>Welcome to the Forum Board. Select an option from the menu to get started.</p>
+    {% endif %}
+{% endblock %}
