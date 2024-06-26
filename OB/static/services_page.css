@@ -153,6 +153,13 @@ main {
     margin-bottom: 20px;
 }
 
+.about-us h4 {
+    font-size: 2.5em;
+    font-family: 'Canela-Regular', serif;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
 .about-us p {
     font-size: 2em;
     font-family: 'Canela-Regular', serif;
@@ -217,7 +224,7 @@ footer {
 .line-in-middle {
     width: 100%;
     height: 1px;
-    margin: 20px auto;
+    margin: 10px auto;
     box-sizing: border-box;
 }
 
