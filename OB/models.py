@@ -28,9 +28,11 @@ class bloomerUser(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.userPassword, password)
 
-    def __init__(self, userName, userEmail):
+    def __init__(self, userName, userEmail, password=None):
         self.userName = userName
         self.userEmail = userEmail
+        if password:
+            self.password = password
 
 
 class journalEntry(db.Model):
