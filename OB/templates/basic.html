@@ -10,23 +10,27 @@
     <header>
         <nav>
             <ul class="nav-left">
-                <li class="nav-name"><a class="no-underline no-color-change special-font" href="{{url_for('views.comments_board')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
+
+                <li class="nav-name"><a class="special-font" href="{{url_for('views.main_page')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
             </ul>
             <ul class="nav-right">
-                <li><a href="{{ url_for('views.main_page') }}" data-text="Home">Home</a></li>
-                <li><a href="{{ url_for('views.about_us') }}" data-text="About">About</a></li>
-                <li><a href="#" data-text="Care Tips">Care Tips</a></li>
-                <li><a href="#" data-text="Services">Services</a></li>
+                <li><a href="#home" data-text="Home">Home</a></li>
+                <li><a href="{{url_for('views.about_us')}}" data-text="About">About</a></li>
+                <li><a href="{{url_for('views.rewards') }}" data-text="Services">Services</a></li>
                 {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('views.comments_board')}}" data-text="comments_board">Forums</a> </li>
                     <li><a href="{{ url_for('views.watering_schedules') }}" data-text="Your Schedules">Your Schedules</a></li>
-                    <li class="user-info">Hello {{ current_user.userName }}!</li>
+                    <li> <a data-text="comments_board">Hello {{ current_user.userName }}!</a></li>
+
                     <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('views.rewards') }}" data-text="Your Schedules">Your Schedules</a></li>
-                    <li><a href="{{ url_for('auth.login_page') }}" data-text="Login/Sign Up">Login/Sign Up</a></li>
+                    <li><a href="{{url_for('auth.login_page')}}" data-text="Login/Sign Up">Login/Sign Up</a></li>
                 {% endif %}
             </ul>
         </nav>
+        <div class="header-text-forums">
+            <h1>Forums</h1>
+        </div>
     </header>
 
     <main>

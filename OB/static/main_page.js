@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to dynamically set the height of the header
   const header = document.querySelector("header");
   const bgImage = new Image();
-  bgImage.src = "/static/images/obhomepage3.jpg"; // Adjust the path if necessary
+  bgImage.src = "/static/images/obhomepage3.jpg";
 
   bgImage.onload = function() {
       const aspectRatio = bgImage.height / bgImage.width;
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
       header.style.height = `${headerHeight}px`;
   };
 
-  // Function to expand or collapse information sections
+  // Expands or collapse information section.
   const infoBlocks = document.querySelectorAll('.info-block');
 
   infoBlocks.forEach(block => {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to add background color to nav on scroll
   const navbar = document.querySelector('nav');
   window.addEventListener('scroll', function() {
-      if (window.scrollY > 50) { // Adjust this value as needed
+      if (window.scrollY > 50) {
           navbar.classList.add('scrolled');
       } else {
           navbar.classList.remove('scrolled');

@@ -13,16 +13,15 @@
             <ul class="nav-left">
 
                 <li class="nav-name"><a class="special-font" href="{{url_for('views.main_page')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
-
             </ul>
             <ul class="nav-right">
-                <li><a href="#home" data-text="Home">Home</a></li>
+                <li><a href="{{url_for('views.main_page') }}" data-text="Home">Home</a></li>
                 <li><a href="{{url_for('views.about_us')}}" data-text="About">About</a></li>
                 <li><a href="{{url_for('views.rewards') }}" data-text="Services">Services</a></li>
                 {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('views.comments_board')}}" data-text="comments_board">Forums</a> </li>
                     <li><a href="{{ url_for('views.watering_schedules') }}" data-text="Your Schedules">Your Schedules</a></li>
-                    <li class="user-info">Hello {{ current_user.userName }}!</li>
+                    <li> <a data-text="comments_board">Hello {{ current_user.userName }}!</a></li>
 
                     <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
                 {% else %}
@@ -40,17 +39,15 @@
             <p class="intro-heading">HI THERE. WE'RE OKAYBLOOMER</p>
             <h2 class="intro-subheading">Don’t worry about being a perfect plant parent. Just be you, and we’ll help you get there.</h2>
             <p class="intro-description">At Okay Bloomer, we’re dedicated to helping you achieve your plant care dreams.</p>
-            <a href=""><button>GET STARTED</button></a>
+            <a href="{{ url_for('auth.login_page') }}"><button>GET STARTED</button></a>
         </div>
         <section class="mission">
             <div class="mission-content">
                 <div class="mission-text">
                     <p>OUR MISSION</p>
                     <h2>At Okay Bloomer, we take the mystery out of achieving your plant care goals</h2>
-                    <div class="mission-image">
-                    <img src="https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/5b3845553018ac57aae6f856c0432c731409f2fb/OB/images/mission.png" alt="Our Mission Image">
-                    </div>
-                    <a href=""><button>LEARN MORE ABOUT US</button></a>
+
+                    <a href="{{url_for('views.about_us')}}"><button>LEARN MORE ABOUT US</button></a>
                 </div>
 
             </div>
@@ -65,7 +62,8 @@
                  </div>
             </div>
             <div class="services-button-container">
-                <a href=""><button class="services-button">OUR SERVICES</button></a>
+                <div class="mission-text">
+                <a href="{{url_for('views.rewards')}}"><button class="services-button">OUR SERVICES</button></a>
             </div>
         </section>
     </main>
