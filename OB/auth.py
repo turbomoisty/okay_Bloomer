@@ -1,4 +1,3 @@
-import re
 
 from flask import Blueprint, request, redirect, url_for, flash, session, render_template, current_app
 from werkzeug.security import check_password_hash

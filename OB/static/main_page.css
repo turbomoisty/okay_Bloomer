@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border;
+}
+
 body {
     font-family: 'Courier New', sans-serif;
     color: #333;
@@ -240,6 +246,7 @@ main {
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 20px;
 }
 
 .mission-text button:hover {
@@ -251,14 +258,14 @@ main {
     flex: 1;
     width: 100%;
     text-align: center;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 .mission-image img {
     display: block;
-    width: 100%;
+    width: 20%;
     height: auto;
-    max-width: 600px;
+    max-width: 1000px;
 }
 
 .marquee-container, .marquee-reverse-container {
@@ -334,7 +341,7 @@ footer {
     border-top: 1px solid white;
     padding-top: 10px;
     margin-top: 20px;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-family: 'Canela-Regular', serif;
     display: flex;
     align-items: center;

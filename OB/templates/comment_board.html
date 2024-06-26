@@ -21,7 +21,7 @@
                     <article class="post">
                         <h2><a href="{{ url_for('views.view_post', post_id=post.id) }}">{{ post.PostTitle if post.PostTitle else 'Untitled Post' }}</a></h2>
                         <p>{{ post.PostText[:100] if post.PostText else 'No content available...' }}...</p>
-                        <p><small>Posted by {{ post.originalPoster.userName if post.originalPoster else 'Unknown' }} on {{ post.timestamp if post.timestamp else 'Unknown date' }}</small></p>
+                        <p><small>Posted by {{ post.originalPoster.userName if post.originalPoster else 'Unknown' }} </small></p>
                     </article>
                 {% endfor %}
             {% else %}
