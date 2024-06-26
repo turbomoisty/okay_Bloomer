@@ -13,9 +13,11 @@
                 <li class="nav-name"><a class="no-underline no-color-change special-font" href="{{url_for('views.main_page')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
             </ul>
             <ul class="nav-right">
+
                 <li><a href="{{url_for('views.main_page')}}" data-text="Home">Home</a></li>
                 <li><a href="{{url_for('views.about_us')}}" data-text="About">About</a></li>
                 <li><a href="{{url_for('views.services_page')}}" data-text="Services">Services</a></li>
+
                 {% if session.get('logged_in') %}
                     <li class="user-info">Hello {{ session.get('bloomerUser') }}!</li>
                     <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
@@ -66,4 +68,5 @@
     </footer>
     <script src="{{ url_for('static', filename='main_page.js')}}"></script>
 </body>
+    <script src="{{ url_for('static', filename='about_us.js')}}"></script>
 </html>

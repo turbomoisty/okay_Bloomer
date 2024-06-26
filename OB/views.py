@@ -1,7 +1,9 @@
 from flask import Blueprint, render_template, request, url_for, session, redirect
 from flask_login import login_user, login_required, current_user
-from okay_Bloomer.OB.models import Plant, userComment, plantType
-from okay_Bloomer.OB import db
+
+from .models import Plant, userComment, plantType
+from . import db
+
 
 views = Blueprint('views', __name__)
 

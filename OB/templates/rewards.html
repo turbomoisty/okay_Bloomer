@@ -13,9 +13,9 @@
                 <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
                 <li><a href="{{ url_for('views.about_us') }}">About</a></li>
                 <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
-                {% if session.get('logged_in') %}
+                {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
-                    <li class="right">Hello {{ session.get('bloomerUser') }} </li>
+                    <li style="color:#85FF00;">Hello {{ current_user.userName }}! </li>
                     <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
@@ -30,24 +30,26 @@
         </header>
         <section class="preview">
             <div class="feature">
-                <img src="" alt="management" style="width:100%;">
                 <h2>Manage Your Plants</h2>
                 <p>Keep track of all your plants in one place, and add new ones easily.</p>
+                <img src="https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/7e9ed508166948c2a240c52e1c3ade3c491ba2f1/OB/images/vecteezy_scientist-in-uniform-working-with-plants-in-greenhouse_12983494-1.jpg" alt="management" class="feature-pic" style="width:100%;">
+
+
             </div>
             <div class="feature">
                 <h2>Watering Schedule</h2>
                 <p>Set and view watering schedules for each of your plants to ensure they stay healthy.</p>
+                <img src="https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/7e9ed508166948c2a240c52e1c3ade3c491ba2f1/OB/images/vecteezy_happy-couple-take-care-of-house-plants-man-and-woman-plant_12983669.jpg" alt="management" class="feature-pic" style="width:100%;">
+
             </div>
             <div class="feature">
-                <h2>Comment Log</h2>
-                <p>Log your observations and track your plants' growth over time.</p>
-            </div>
-            <div class="feature">
-                <h2>Image Upload</h2>
-                <p>Upload pictures of your plants to monitor their progress visually.</p>
+                <h2>Share your stories</h2>
+                <p>Log your observations and track your plants' growth over time and even share your success stories with others!</p>
+                <img src="https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/7e9ed508166948c2a240c52e1c3ade3c491ba2f1/OB/images/vecteezy_happy-diverse-farmers-with-tools-involved-in-organic-farming_13128054.jpg" alt="management" class="feature-pic" style="width:100%;">
+
             </div>
             <div class="login-btn-container">
-                <a href="{{ url_for('auth.login_page') }}" class="login-btn">Click to log in!</a>
+                <a href="{{ url_for('auth.login_page') }}" class="login-btn">Click to join!</a>
             </div>
 
         </section>
