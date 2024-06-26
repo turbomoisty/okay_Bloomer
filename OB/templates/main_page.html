@@ -11,7 +11,9 @@
     <header>
         <nav>
             <ul class="nav-left">
-                <li class="nav-name"><a class="no-underline no-color-change special-font" href="{{url_for('views.main_page')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
+
+                <li class="nav-name"><a class="special-font" href="{{url_for('views.main_page')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
+
             </ul>
             <ul class="nav-right">
                 <li><a href="#home" data-text="Home">Home</a></li>
@@ -22,6 +24,7 @@
                     <li><a href="{{ url_for('views.comments_board')}}" data-text="comments_board">Forums</a> </li>
 
                     <li class="user-info">Hello {{ current_user.userName }}!</li>
+
                     <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
                 {% else %}
                     <li><a href="{{url_for('auth.login_page')}}" data-text="Login/Sign Up">Login/Sign Up</a></li>
@@ -40,23 +43,6 @@
             <p class="intro-description">At Okay Bloomer, we’re dedicated to helping you achieve your plant care dreams.</p>
             <a href=""><button>GET STARTED</button></a>
         </div>
-        <section class="services">
-            <h2 class="services-title">Personalized plant care strategies for your thriving indoor garden.</h2>
-            <div class="services-grid">
-                <div class="service-block">
-                    <h3>Plant Journaling</h3>
-                    <p>Document your plant's journey. Keeping a detailed journal helps you track growth, monitor health, and document milestones. By noting down watering schedules, sunlight exposure, and any changes in your plant's appearance, you can provide tailored care and ensure each plant thrives in its unique way.</p>
-                </div>
-                <div class="service-block">
-                    <h3>Water Management</h3>
-                    <p>Achieving the perfect balance. Understanding the specific watering needs of each plant is crucial for their health. Some plants prefer a dry spell between waterings, while others thrive in consistently moist soil. Our water management tools help you maintain the perfect balance, preventing over watering and under watering, and keeping your plants happy and hydrated.</p>
-                </div>
-                <div class="service-block">
-                    <h3>Plant Care Tips</h3>
-                    <p>Empower your green thumb. Whether you’re dealing with pests, seeking the right fertilizer, or figuring out the best light conditions, having the right tips can transform your plant care routine. We provide expert advice and actionable tips to help you tackle common plant problems and enhance your green thumb skills, ensuring your indoor garden flourishes.</p>
-                </div>
-            </div>
-        </section>
         <section class="mission">
             <div class="mission-content">
                 <div class="mission-text">
@@ -83,31 +69,15 @@
             </div>
         </section>
     </main>
-     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-    <img src="https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/da5293beb22b7deb984576da2ba6d66eb59f8c23/OB/images/footerlog1.png">
-            </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h3>LEARN</h3>
-                    <a href="">Services</a>
-                    <a href="{{url_for('views.about_us')}}">About</a>
-                    <a href="">Care Tips</a>
-                </div>
-                <div class="footer-column">
-                    <h3>CONTACT US</h3>
-                    <a href="{{url_for('views.about_us')}}">About</a>
-                </div>
-                <div class="footer-bottom">
-                        <p>© 2022 Okay Bloomer. All rights reserved. We value and respect your privacy.</p>
-                </div>
-            </div>
-        </div>
-        <div class="line-in-middle"></div>
-        <div class="footer-end">
-            <p>okaybloomer</p>
-        </div>
+    <footer>
+    <div class="footer-content">
+        <div class="footer-bottom">© 2022 Okay Bloomer. All rights reserved. We value and respect your privacy.</div>
+    </div>
+    <div class="line-in-middle"></div>
+    <div class="footer-end">
+        <p>okaybloomer</p>
+    </div>
+
     </footer>
     <script src="{{ url_for('static', filename='main_page.js')}}"></script>
 </body>

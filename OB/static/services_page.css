@@ -39,7 +39,6 @@ header::before {
    pointer-events: none;
 }
 
-
 .header-text-about-us {
     position: relative;
     margin: auto;
@@ -48,54 +47,13 @@ header::before {
     z-index: 2;
     width: 80%;
     padding-top: 40px;
-
 }
 
-
-header {
-    width: 100%;
-    background: url("") no-repeat center top;
-    background-size: cover;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    height: 20vh; /* Adjust height as needed */
-}
-
-header::before {
-   content: '';
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background-color: rgba(29, 86, 49, 0.89);  /* Adjust the color and transparency here */
-   z-index: 1; /* Ensure the overlay is above the background image but below the content */
-   pointer-events: none; /* Prevent overlay from interfering with interactions */
-}
-
-.header-text {
-    position: relative;
-    margin: auto;
-    text-align: center;
-    color: white;
-    z-index: 2;
-    width: 80%;
-    padding-top: 20px;
-}
-
-.header-text h1 {
-    font-size: 6vw; /* Adjust to be responsive */
-
+.header-text-about-us h1 {
+    font-size: 10em;
     font-family: 'Canela-Regular', serif;
     margin: 0;
 }
-
 
 
 nav {
@@ -147,7 +105,6 @@ nav ul li a {
     font-family: Nib, serif;
     font-weight: 400;
     line-height: 2;
-
     font-size: 1.5vw;
     position: relative;
 }
@@ -174,7 +131,6 @@ main {
 .about-us-team {
     max-width: 800px;
     margin: 20px 0;
-
 }
 
 .about-us h1 {
@@ -191,6 +147,13 @@ main {
 }
 
 .about-us h3 {
+    font-size: 2.5em;
+    font-family: 'Canela-Regular', serif;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.about-us h4 {
     font-size: 2.5em;
     font-family: 'Canela-Regular', serif;
     margin-top: 40px;
@@ -261,7 +224,7 @@ footer {
 .line-in-middle {
     width: 100%;
     height: 1px;
-    margin: 20px auto;
+    margin: 10px auto;
     box-sizing: border-box;
 }
 
@@ -277,29 +240,6 @@ nav.scrolled ul li a:hover {
     color: #406D1C !important;
     text-decoration: underline !important;
 }
- /*Just copy and paste this bit into all css files*/
-.scrolled {
-    background-color: rgba(255, 255, 255, 1);
-}
-
-nav.scrolled ul li a {
-    color: black !important;
-}
-
-nav.scrolled ul li a:hover {
-    color: #406D1C !important;
-    text-decoration: underline !important;
-}
-
-nav.scrolled ul li a.no-underline:hover {
-    text-decoration: none !important;
-}
-
-nav.scrolled ul li a.no-color-change, nav.scrolled ul li a.no-color-change:hover {
-    color: black !important;
-}
-
-
 
 nav.scrolled ul li a.no-underline:hover {
     text-decoration: none !important;
