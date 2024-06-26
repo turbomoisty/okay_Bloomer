@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Minimalistic Forum Board{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='comments_board.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-left">
+                <li class="nav-name"><a class="no-underline no-color-change special-font" href="{{url_for('views.comments_board')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li><a href="{{ url_for('views.main_page') }}" data-text="Home">Home</a></li>
+                <li><a href="{{ url_for('views.about_us') }}" data-text="About">About</a></li>
+                <li><a href="#" data-text="Care Tips">Care Tips</a></li>
+                <li><a href="#" data-text="Services">Services</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('views.watering_schedules') }}" data-text="Your Schedules">Your Schedules</a></li>
+                    <li class="user-info">Hello {{ current_user.userName }}!</li>
+                    <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('views.rewards') }}" data-text="Your Schedules">Your Schedules</a></li>
+                    <li><a href="{{ url_for('auth.login_page') }}" data-text="Login/Sign Up">Login/Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <a href="{{ url_for('views.comments_board') }}" class="backButton button"> << Back </a>
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Forum Board. All rights reserved.</p>
+    </footer>
+</body>
+    <script src="{{ url_for('static', filename='main_page.js')}}"></script>
+
+</html>

@@ -11,7 +11,7 @@ class bloomerUser(db.Model, UserMixin):
     userEmail = db.Column(db.String(20), index=True, unique=True)
     userPassword = db.Column(db.String(15), index=False, unique=False)
 
-    poster = db.relationship('userCommunityPost', backref='originalPoster', lazy=True)
+    poster = db.relationship('userPost', backref='originalPoster', lazy=True)
     journal = db.relationship('journalEntry', backref='obUser', lazy=True)
     plants = db.relationship('Plant', backref='obPlant', lazy=True)
     comments = db.relationship('userComment', backref='obComments', lazy=True)
@@ -43,16 +43,9 @@ class journalEntry(db.Model):
 
 
 # The reason we choose the character limit of 280 for postText is because on X they use that value as theirs
-class userCommunityPost(db.Model):
-    __tablename__ = 'user_community_post'
-    id = db.Column(db.Integer, primary_key=True)
-    PostTitle = db.Column(db.String(15), nullable=False)
-    postText = db.Column(db.String(280), nullable=False)
 
-    user_id = db.Column(db.Integer, db.ForeignKey('bloomer_user.id'))
-    comments = db.relationship('userComment', backref='userPost', lazy=True)
 
-    # post date still needs to be added in
+# post date still needs to be added in
 
 
 # We specifically chose 39 characters for the plantType_id is because the longest plant name is 39 letters
@@ -68,6 +61,14 @@ class Plant(db.Model):
 
 
 # In regard to waterDate we will be also looking into how implement it as a calendar not add it in manually
+class userPost(db.Model):
+    __tablename__ = 'user_community_post'
+    id = db.Column(db.Integer, primary_key=True)
+    PostTitle = db.Column(db.String(15), nullable=False)
+    PostText = db.Column(db.String(280), nullable=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('bloomer_user.id'))
+    comments = db.relationship('userComment', backref='userPost', lazy=True)
 
 
 class userComment(db.Model):

@@ -39,6 +39,7 @@ header::before {
    pointer-events: none;
 }
 
+
 .header-text-about-us {
     position: relative;
     margin: auto;
@@ -47,6 +48,7 @@ header::before {
     z-index: 2;
     width: 80%;
     padding-top: 40px;
+
 }
 
 
@@ -62,7 +64,7 @@ header {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    height: 100vh; /* Adjust height as needed */
+    height: 20vh; /* Adjust height as needed */
 }
 
 header::before {
@@ -275,6 +277,29 @@ nav.scrolled ul li a:hover {
     color: #406D1C !important;
     text-decoration: underline !important;
 }
+ /*Just copy and paste this bit into all css files*/
+.scrolled {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+nav.scrolled ul li a {
+    color: black !important;
+}
+
+nav.scrolled ul li a:hover {
+    color: #406D1C !important;
+    text-decoration: underline !important;
+}
+
+nav.scrolled ul li a.no-underline:hover {
+    text-decoration: none !important;
+}
+
+nav.scrolled ul li a.no-color-change, nav.scrolled ul li a.no-color-change:hover {
+    color: black !important;
+}
+
+
 
 nav.scrolled ul li a.no-underline:hover {
     text-decoration: none !important;

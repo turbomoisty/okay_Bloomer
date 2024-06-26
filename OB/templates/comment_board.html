@@ -1,0 +1,67 @@
+{% extends 'basic.html' %}
+
+{% block title %}Forum Board{% endblock %}
+
+{% block content %}
+
+
+    {% if view == 'create_post' %}
+        <section class="post-creation">
+            <h2>Create a Post</h2>
+            <form method="POST" action="{{ url_for('views.create_post') }}">
+                <input type="text" name="title" placeholder="Post Title" required>
+                <textarea name="content" placeholder="Write your post here..." required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </section>
+    {% elif view == 'forum' %}
+        <section class="posts">
+            {% if posts %}
+                {% for post in posts %}
+                    <article class="post">
+                        <h2><a href="{{ url_for('views.view_post', post_id=post.id) }}">{{ post.PostTitle if post.PostTitle else 'Untitled Post' }}</a></h2>
+                        <p>{{ post.PostText[:100] if post.PostText else 'No content available...' }}...</p>
+                        <p><small>Posted by {{ post.originalPoster.userName if post.originalPoster else 'Unknown' }} on {{ post.timestamp if post.timestamp else 'Unknown date' }}</small></p>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>No posts to display</p>
+                <a href="{{ url_for('views.create_post') }}" class="button">Create a Post</a>
+            {% endif %}
+        </section>
+        <section>
+                <a href="{{ url_for('views.create_post') }}" class="createPost button"> Create Your post! </a>
+
+        </section>
+    {% elif view == 'view_post' %}
+        <article class="post">
+            <h2>{{ post.PostTitle if post.PostTitle else 'Untitled Post' }}</h2>
+            <p>{{ post.PostText if post.PostText else 'No content available...' }}</p>
+            <p><small>Posted by {{ post.originalPoster.userName if post.originalPoster else 'Unknown' }} on {{ post.timestamp if post.timestamp else 'Unknown date' }}</small></p>
+        </article>
+        <section class="comments">
+            <h3>Comments</h3>
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="comment">
+                        <p>{{ comment.commentText if comment.commentText else 'No comment text available...' }}</p>
+                        <p><small>Commented by {{ comment.obComments.userName if comment.obComments else 'Unknown' }} on {{ comment.timestamp if comment.timestamp else 'Unknown date' }}</small></p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No comments to display</p>
+            {% endif %}
+        </section>
+        <section class="add-comment">
+            <h3>Add a Comment</h3>
+            <form method="POST" action="{{ url_for('views.view_post', post_id=post.id) }}">
+                <textarea name="reply" placeholder="Write your comment here..." required></textarea>
+                <button type="submit">Comment</button>
+            </form>
+        </section>
+    {% else %}
+        <p>Welcome to the Forum Board!</p>
+    {% endif %}
+
+
+{% endblock %}
