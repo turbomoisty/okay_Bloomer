@@ -1,7 +1,9 @@
 from flask import Blueprint, render_template, request, url_for, session, redirect
 from flask_login import login_user, login_required, current_user
+
 from .models import Plant, userComment, plantType
 from . import db
+
 
 views = Blueprint('views', __name__)
 
@@ -86,3 +88,9 @@ def add_comments():
 @views.route('/under_construction')
 def under_construction():
     return render_template('under_construction.html')
+
+
+@views.route('/services_page')
+def services_page():
+    return render_template('services_page.html')
+
