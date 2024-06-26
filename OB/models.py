@@ -65,7 +65,7 @@ class userPost(db.Model):
     __tablename__ = 'user_community_post'
     id = db.Column(db.Integer, primary_key=True)
     PostTitle = db.Column(db.String(15), nullable=False)
-    postText = db.Column(db.String(280), nullable=False)
+    PostText = db.Column(db.String(280), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('bloomer_user.id'))
     comments = db.relationship('userComment', backref='userPost', lazy=True)

@@ -19,8 +19,9 @@
                 <li><a href="" data-text="Care Tips">Care Tips</a></li>
                 <li><a href="" data-text="Services">Services</a></li>
                 {% if current_user.is_authenticated %}
-                    <li> <a href="{{ url_for (views.watering_schedules.html)}}" data-text="Your Schedules"></a> </li>
-                    <li class="user-info">Hello {{ session.get('bloomerUser') }}!</li>
+                    <li><a href="{{ url_for('views.comments_board')}}" data-text="comments_board">Forums</a> </li>
+                    <li><a href="{{ url_for ('views.watering_schedules') }}" data-text="Your Schedules">Your Schedules</a></li>
+                    <li class="user-info">Hello {{ current_user.userName }}!</li>
                     <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
                 {% else %}
                     <li> <a href="{{url_for('views.rewards') }}" data-text="Your Schedules">Your Schedules</a></li>

@@ -30,6 +30,8 @@
     </header>
 
     <main>
+        <a href="{{ url_for('views.comments_board') }}" class="backButton button"> << Back </a>
+
         {% block content %}{% endblock %}
     </main>
 
@@ -37,4 +39,6 @@
         <p>&copy; 2024 Forum Board. All rights reserved.</p>
     </footer>
 </body>
+    <script src="{{ url_for('static', filename='main_page.js')}}"></script>
+
 </html>

@@ -23,7 +23,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url() no-repeat center center/cover;
+    background: url("https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/e0b3855fc1f67389ee3935a09e430b495fc2a2c9/OB/images/login_pageBckImg.png") no-repeat center center/cover;
     background-size: cover;
 }
 

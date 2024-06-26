@@ -22,7 +22,6 @@ def login_page():
                 user = bloomerUser.query.filter_by(userName=username).first()
                 if user and check_password_hash(user.userPassword, password):
                     login_user(user)
-                    flash("Login successful", 'success')
 
                     return redirect(url_for('views.main_page'))
                 else:
@@ -46,7 +45,7 @@ def login_page():
                 elif existing_name:
                     flash("This username already exists!", "error")
                 else:
-                    # I dont know why it says unexpected argument, but removing them breaks the code, so dont.
+                    # I don't know why it says unexpected argument, but removing them breaks the code, so dont.
                     new_user = bloomerUser(userName=username, userEmail=email)
                     new_user.password = password
                     db.session.add(new_user)

@@ -1,5 +1,23 @@
 /* General Styles */
 
+.backButton {
+    position: absolute;
+    top: 10px;  /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    z-index: 100; /* Ensure it's on top of other elements */
+}
+
+.createPost {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 
 header {
     width: 100%;
@@ -104,6 +122,7 @@ nav ul li a {
 }
 
 main {
+    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -112,6 +131,11 @@ main {
     padding: 20px;
     width: 100%;
 }
+.user-info {
+    font-weight: bold;
+}
+
+
 .user-info {
     font-weight: bold;
 }
@@ -180,12 +204,20 @@ footer {
 
 /* Posts and Comments Styles */
 .posts {
-    margin-bottom: 2em;
+
+    margin-bottom: 1em;
 }
 
 .post {
-    border-bottom: 1px solid #ddd;
-    padding: 1em 0;
+
+    border-bottom: 3px solid #ddd;
+    padding: 2em 0;
+    background-color: #C7E8C6; /* Background color for each post */
+    margin-bottom: 1em;
+    margin-top:2em;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .post h2 {
@@ -199,6 +231,8 @@ footer {
 }
 
 .post h2 a:hover {
+    color: #1E90FF; /* Bright Blue */
+
     text-decoration: underline;
 }
 
@@ -298,4 +332,38 @@ footer {
 
 .special-font {
     font-family: 'Special Elite', cursive; /* Example of a special font */
+}}
+
+.scrolled {
+    background-color: rgba(255, 255, 255, 1);
 }
+
+
+nav.scrolled ul li a:hover {
+    color: #406D1C !important;
+    text-decoration: underline !important;
+}
+
+nav.scrolled ul li a.no-underline:hover {
+    text-decoration: none !important;
+}
+
+nav.scrolled ul li a.no-color-change, nav.scrolled ul li a.no-color-change:hover {
+    color: black !important;
+}
+.line-in-middle {
+    width: 100%;
+    height: 1px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.scrolled {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+nav.scrolled ul li a {
+    color: black !important;
+}
+
+
