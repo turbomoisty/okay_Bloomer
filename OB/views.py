@@ -15,7 +15,7 @@ def main_page():
 
 
 # When routing functions, you need to have .views as prefix
-#Or not? I don't know why some work with  or withour
+# Or not? I don't know why some work with  or without
 @views.route('/about_us')
 def about_us():
     return render_template('about_us.html')
@@ -94,6 +94,7 @@ def comments_board():
     posts = userPost.query.all()
     return render_template('comment_board.html', view='forum', posts=posts)
 
+
 @views.route('/create_post', methods=['GET', 'POST'])
 @login_required
 def create_post():
@@ -107,10 +108,11 @@ def create_post():
             return redirect(url_for('views.comments_board'))
     return render_template('comment_board.html', view='create_post')
 
+
 @views.route('/post/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def view_post(post_id):
-    post = userPost.query.get_or_404(post_id)
+    post = userPost.query.get(post_id)
     comments = userComment.query.filter_by(post_id=post_id).all()
     if request.method == 'POST':
         reply = request.form.get('reply')

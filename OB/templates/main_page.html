@@ -16,11 +16,10 @@
             <ul class="nav-right">
                 <li><a href="#home" data-text="Home">Home</a></li>
                 <li><a href="{{url_for('views.about_us')}}" data-text="About">About</a></li>
-                <li><a href="" data-text="Care Tips">Care Tips</a></li>
                 <li><a href="{{url_for('views.rewards') }}" data-text="Services">Services</a></li>
                 {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('views.comments_board')}}" data-text="comments_board">Forums</a> </li>
-
+                    <li><a href="{{ url_for('views.watering_schedules') }}" data-text="Your Schedules">Your Schedules</a></li>
                     <li class="user-info">Hello {{ current_user.userName }}!</li>
                     <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
                 {% else %}
@@ -62,11 +61,12 @@
                 <div class="mission-text">
                     <p>OUR MISSION</p>
                     <h2>At Okay Bloomer, we take the mystery out of achieving your plant care goals</h2>
+                    <div class="mission-image">
+                    <img src="https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/5b3845553018ac57aae6f856c0432c731409f2fb/OB/images/mission.png" alt="Our Mission Image">
+                    </div>
                     <a href=""><button>LEARN MORE ABOUT US</button></a>
                 </div>
-                <div class="mission-image">
-                    <img src="/static/images/cacti1.jpg" alt="Our Mission Image">
-                </div>
+
             </div>
             <div class="marquee-container">
                 <div class="marquee">
