@@ -48,7 +48,7 @@
                     <ul>
                         {% for plant in plants %}
                             <li>{{plant.plantName}} - Schedule: {{ plant.waterDate }} days
-                            {% if plant.days_left <= 0 %}
+                            {% if plant.days_left == 0 %}
                                 <script>
                                 alert("It's time to water your plant: {{ plant.plantName }}!");
                                 </script>

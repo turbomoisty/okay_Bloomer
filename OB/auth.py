@@ -1,6 +1,5 @@
-
-from flask import Blueprint, request, redirect, url_for, flash, session, render_template, current_app
-from werkzeug.security import check_password_hash
+from flask import Blueprint, request, redirect, url_for, flash, jsonify, render_template, current_app
+from werkzeug.security import check_password_hash, generate_password_hash
 from .models import bloomerUser, db
 from flask_login import login_user, logout_user, login_required
 
@@ -19,7 +18,7 @@ def login_page():
                 flash("Please fill the required fields", 'error')
             else:
                 user = bloomerUser.query.filter_by(userName=username).first()
-                if user and check_password_hash(user.userPassword, password):
+                if user and user.check_password(password):
                     login_user(user)
 
                     return redirect(url_for('views.main_page'))
@@ -46,12 +45,12 @@ def login_page():
                 else:
                     # I don't know why it says unexpected argument, but removing them breaks the code, so dont.
                     new_user = bloomerUser(userName=username, userEmail=email)
-                    new_user.password = password
+                    new_user.set_password = password
                     db.session.add(new_user)
                     db.session.commit()
                     flash('Sign up successful! Please log in.', 'success')
                     return redirect(url_for('auth.login_page'))
-                #else:
+                # else:
 
     return render_template('login_page.html')
 
@@ -62,3 +61,21 @@ def logout():
     logout_user()
     flash('You are now logged out!.', 'success')
     return redirect(url_for('auth.login_page'))
+
+
+@auth.route('/add-user', methods=['POST'])
+def add_user():
+    data = request.get_json()
+    username = data.get('userName')
+    email = data.get('userEmail')
+    password = data.get('userPassword')
+
+    if not username or not email or not password:
+        return jsonify({"error": "some fields are empty"}), 400
+
+
+    new_user = bloomerUser(userName=username, userEmail=email)
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify({"message": "User created successfully"}), 201
