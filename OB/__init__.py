@@ -1,8 +1,6 @@
 from flask import Flask
-import secrets
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-
 
 db = SQLAlchemy()
 login_manger = LoginManager()
@@ -17,7 +15,6 @@ def create_site():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///myPlantDB.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
     db.init_app(app)
 
     login_manger.login_view = 'auth.login_page'
@@ -30,7 +27,6 @@ def create_site():
     with app.app_context():
         from .models import bloomerUser
         db.create_all()
-
 
     from .views import views as views_blueprint
     from .auth import auth as auth_blueprint

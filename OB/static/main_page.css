@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border;
+    box-sizing: border-box;
 }
 
 body {
@@ -28,7 +28,7 @@ header {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    height: 100vh; /* Adjust height as needed */
+    height: 100vh;
 }
 
 header::before {
@@ -38,9 +38,9 @@ header::before {
    left: 0;
    width: 100%;
    height: 100%;
-   background-color: rgba(29, 86, 49, 0.89);  /* Adjust the color and transparency here */
-   z-index: 1; /* Ensure the overlay is above the background image but below the content */
-   pointer-events: none; /* Prevent overlay from interfering with interactions */
+   background-color: rgba(29, 86, 49, 0.89);
+   z-index: 1;
+   pointer-events: none;
 }
 
 .header-text {
@@ -54,16 +54,14 @@ header::before {
 }
 
 .header-text h1 {
-    font-size: 17em; /* Adjust to be responsive */
+    font-size: 10vw;
     padding-top: 20px;
     font-family: 'Canela-Regular', serif;
     margin: 0;
 }
 
 .header-text p {
-
-    font-size: 4em; /* Adjust to be responsive */
-
+    font-size: 4vw;
     font-family: 'Canela-Regular', serif;
     margin-top: 20px;
 }
@@ -80,9 +78,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 2px 40px;
-
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-
 }
 
 nav ul {
@@ -115,13 +111,11 @@ nav ul li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-
     transition: color 0.3s ease, border-bottom 0.3s ease;
-
     font-family: Nib, serif;
     font-weight: 400;
     line-height: 2;
-    font-size: 1.5vw; /* Adjust to be responsive */
+    font-size: 1.5vw;
     position: relative;
 }
 
@@ -159,25 +153,25 @@ main {
     max-width: 800px;
     margin: 20px 0;
     padding: 50px;
-    width: 90%; /* Adjust to be responsive */
-    height: 100vh; /* Full screen size */
+    width: 90%;
+    height: 100vh;
 }
 
 .intro-text .intro-heading {
-    font-size: 1.5em;
+    font-size: 2em;
     font-family: 'Canela-Regular', serif;
     margin: 20px 0;
 }
 
 .intro-text .intro-subheading {
-    font-size: 2em; /* Adjust to be responsive */
+    font-size: 2.5em;/
     font-family: 'Canela-Regular', serif;
     font-weight: normal;
     margin: 20px 0;
 }
 
 .intro-text .intro-description {
-    font-size: 2em; /* Adjust to be responsive */
+    font-size: 1.5em;
     font-family: 'Canela-Regular', serif;
     margin: 20px 0;
 }
@@ -197,9 +191,8 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 150vh; /* Ensure the section takes the full height */
+    height: auto;
     background-color: rgba(192, 224, 192, 0.89);
-
     margin-bottom: 100px;
     padding: 20px;
     justify-content: space-between;
@@ -221,7 +214,6 @@ main {
     text-align: center;
     padding-right: 20px;
     margin-bottom: 20px;
-
 }
 
 .mission-text p {
@@ -234,7 +226,6 @@ main {
     font-size: 2.5em;
     font-family: 'Canela-Regular', serif;
     margin-bottom: 20px;
-
 }
 
 .mission-text button {
@@ -263,52 +254,57 @@ main {
 
 .mission-image img {
     display: block;
-    width: 20%;
+    margin: 0 auto;
+    width: 50%;
     height: auto;
-    max-width: 1000px;
+    max-width: 500px;
 }
-
+/* Leave this part to Abi. I don't want to break anything*/
 .marquee-container, .marquee-reverse-container {
     width: 100%;
     overflow: hidden;
     background-color: transparent;
     display: flex;
     flex-wrap: wrap;
-    gap: 0px; /* Adjust the gap as needed */
+    gap: 0px;
     justify-content: center;
-    position: relative; /* Remove any bottom margin to decrease gap */
+    position: relative;
 }
 
 .marquee, .marquee-reverse {
     display: inline-block;
     white-space: nowrap;
     box-sizing: border-box;
-    animation: marquee 6s linear infinite; /* Increased duration for slower animation */
-    font-size: 120px; /* Adjust to be responsive */
+    animation: marquee 6s linear infinite alternate;
+    font-size: 3vw;
     color: rgba(0, 0, 0);
     width: 100%;
 }
 
 @keyframes marquee {
     0% {
-        transform: translateX(-20%);
+        transform: translateX(0%);
     }
     100% {
-        transform: translateX(calc(80vw - 80%));
+        transform: translateX(calc(100vw - 100%));
     }
 }
 
 @keyframes marquee-reverse {
     0% {
-        transform: translateX(calc(80vw - 80%));
+        transform: translateX(calc(100vw - 100%));
     }
     100% {
-        transform: translateX(-20%);
+        transform: translateX(0%);
     }
+}
+/* These have the text do the back and forth effect. */
+.marquee {
+    animation: marquee 6s linear infinite alternate;
 }
 
 .marquee-reverse {
-    animation: marquee-reverse 30s linear infinite; /* Use a separate animation for reverse */
+    animation: marquee-reverse 6s linear infinite alternate;
 }
 
 footer {
@@ -326,12 +322,11 @@ footer {
     font-family: 'Canela-Regular', serif;
     margin: 0 auto;
     padding: 20px 0;
-
 }
 
 .footer-bottom {
     font-family: 'Canela-Regular', serif;
-    font-size: 2.5em;
+    font-size: 2em;
     align-items: center;
     width: 100%;
 }
@@ -341,7 +336,7 @@ footer {
     border-top: 1px solid white;
     padding-top: 10px;
     margin-top: 20px;
-    font-size: 1.1em;
+    font-size: 12em;
     font-family: 'Canela-Regular', serif;
     display: flex;
     align-items: center;
@@ -350,16 +345,10 @@ footer {
 
 .footer-end p {
     margin: 10px 0;
-    font-size: 1em; /* Adjusted font size for better readability */
-    white-space: nowrap; /* Prevents text from wrapping */
-
+    font-size: 1em;
+    white-space: nowrap;
     justify-content: center;
     box-sizing: border-box;
-}
-
-.footer-end p {
-    margin: 10px 0;
-    font-size: 11.5em;
 }
 
 .line-in-middle {
@@ -389,58 +378,62 @@ nav.scrolled ul li a.no-underline:hover {
 nav.scrolled ul li a.no-color-change, nav.scrolled ul li a.no-color-change:hover {
     color: black !important;
 }
-
+/* Below code should prevent the css elements from going wild when viewing on different screens.
+Does not work 100% as I want. Some words get enlarged slightly, but I don't know how to completely prevent that.*/
 @media (max-width: 1200px) {
     .header-text h1 {
-        font-size: 5vw;
+        font-size: 8vw;
     }
     .header-text p {
-        font-size: 2vw;
+        font-size: 3vw;
     }
     .intro-text {
         padding: 20px;
     }
+    .intro-text .intro-heading, .intro-text .intro-subheading, .intro-text .intro-description {
+        font-size: 1.5em;
+    }
     .services-title {
         font-size: 2em;
     }
-    .service-block p {
-        font-size: 1em;
-    }
     .mission-text h2 {
         font-size: 2em;
+    }
+    .marquee, .marquee-reverse {
+        font-size: 4vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-text h1 {
+        font-size: 6vw;
+    }
+    .header-text p {
+        font-size: 2.5vw;
+    }
+    nav ul li a {
+        font-size: 1em;
+    }
+    .intro-text {
+        padding: 20px;
+    }
+    .intro-text .intro-heading, .intro-text .intro-subheading, .intro-text .intro-description {
+        font-size: 1.2em;
+    }
+    .mission-text h2 {
+        font-size: 1.8em;
     }
     .marquee, .marquee-reverse {
         font-size: 3vw;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .header-text h1 {
-        font-size: 4vw;
+        font-size: 5vw;
     }
     .header-text p {
         font-size: 2vw;
-    }
-    nav ul li a {
-        font-size: 1em;
-    }
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    .mission-text h2 {
-        font-size: 1.8em;
-    }
-    .marquee, .marquee-reverse {
-        font-size: 2.5vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .header-text h1 {
-        font-size: 3.5vw;
-    }
-    .header-text p {
-        font-size: 1.8vw;
     }
     nav ul li a {
         font-size: 0.8em;
@@ -448,11 +441,11 @@ nav.scrolled ul li a.no-color-change, nav.scrolled ul li a.no-color-change:hover
     .intro-text {
         padding: 10px;
     }
+    .intro-text .intro-heading, .intro-text .intro-subheading, .intro-text .intro-description {
+        font-size: 1em;
+    }
     .services-title {
         font-size: 1.5em;
-    }
-    .service-block p {
-        font-size: 0.9em;
     }
     .mission-text h2 {
         font-size: 1.5em;
@@ -460,117 +453,17 @@ nav.scrolled ul li a.no-color-change, nav.scrolled ul li a.no-color-change:hover
     .marquee, .marquee-reverse {
         font-size: 2vw;
     }
-
 }
 
-.line-in-middle {
-    width: 100%;
-    height: 1px;
-    margin: 20px auto;
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
         text-align: center;
     }
     .footer-bottom {
-        font-size: 2em; /* Adjust font size for smaller screens */
+        font-size: 2em;
     }
     .footer-end p {
         font-size: 0.9em;
     }
 }
-
-.scrolled {
-    background-color: rgba(255, 255, 255, 1);
-}
-
-nav.scrolled ul li a {
-    color: black !important;
-}
-
-nav.scrolled ul li a:hover {
-    color: #406D1C !important;
-    text-decoration: underline !important;
-}
-
-nav.scrolled ul li a.no-underline:hover {
-    text-decoration: none !important;
-}
-
-nav.scrolled ul li a.no-color-change, nav.scrolled ul li a.no-color-change:hover {
-    color: black !important;
-}
-
-@media (max-width: 1200px) {
-    .header-text h1 {
-        font-size: 5vw;
-    }
-    .header-text p {
-        font-size: 2vw;
-    }
-    .intro-text {
-        padding: 20px;
-    }
-    .services-title {
-        font-size: 2em;
-    }
-    .service-block p {
-        font-size: 1em;
-    }
-    .mission-text h2 {
-        font-size: 2em;
-    }
-    .marquee, .marquee-reverse {
-        font-size: 3vw;
-    }
-}
-
-@media (max-width: 768px) {
-    .header-text h1 {
-        font-size: 4vw;
-    }
-    .header-text p {
-        font-size: 2vw;
-    }
-    nav ul li a {
-        font-size: 1em;
-    }
-    .mission-text h2 {
-        font-size: 1.8em;
-    }
-    .marquee, .marquee-reverse {
-        font-size: 2.5vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .header-text h1 {
-        font-size: 3.5vw;
-    }
-    .header-text p {
-        font-size: 1.8vw;
-    }
-    nav ul li a {
-        font-size: 0.8em;
-    }
-    .intro-text {
-        padding: 10px;
-    }
-    .services-title {
-        font-size: 1.5em;
-    }
-    .service-block p {
-        font-size: 0.9em;
-    }
-    .mission-text h2 {
-        font-size: 1.5em;
-    }
-    .marquee, .marquee-reverse {
-        font-size: 2vw;
-    }
-}
-
-

@@ -10,17 +10,22 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="{{ url_for('views.main_page') }}">Home</a></li>
-                <li><a href="{{ url_for('views.about_us') }}">About</a></li>
-                <li><a href="{{ url_for('views.under_construction') }}">Services</a></li>
+            <ul class="nav-left">
+
+                <li class="nav-name"><a class="special-font" href="{{url_for('views.main_page')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li><a href="{{url_for('views.main_page') }}" data-text="Home">Home</a></li>
+                <li><a href="{{url_for('views.about_us')}}" data-text="About">About</a></li>
+                <li><a href="{{url_for('views.rewards') }}" data-text="Services">Services</a></li>
                 {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('views.watering_schedules')}}">Schedules</a></li>
-                    <li style="color:#85FF00;">Hello {{ current_user.userName }}! </li>
-                    <li class="logout"><a href="{{url_for('auth.logout') }}">Logout</a></li>
+                    <li><a href="{{ url_for('views.comments_board')}}" data-text="comments_board">Forums</a> </li>
+                    <li><a href="{{ url_for('views.watering_schedules') }}" data-text="Your Schedules">Your Schedules</a></li>
+                    <li> <a data-text="comments_board">Hello {{ current_user.userName }}!</a></li>
+
+                    <li><a href="{{ url_for('auth.logout') }}" data-text="Logout">Logout</a></li>
                 {% else %}
-                    <li><a href="{{url_for('views.rewards') }} ">Schedules</a></li>
-                    <li class="right"><a href="{{ url_for('auth.login_page') }}">Login/Sign Up</a></li>
+                    <li><a href="{{url_for('auth.login_page')}}" data-text="Login/Sign Up">Login/Sign Up</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -41,8 +46,14 @@
                 <h1> You have no plants yet! </h1>
                     {% else %}
                     <ul>
-                    {% for plant in plants %}
-                    <li>{{plant.plantName}} - Schedule: {{ plant.waterDate }} days </li>
+                        {% for plant in plants %}
+                            <li>{{plant.plantName}} - Schedule: {{ plant.waterDate }} days
+                            {% if plant.days_left <= 0 %}
+                                <script>
+                                alert("It's time to water your plant: {{ plant.plantName }}!");
+                                </script>
+                        {% endif %}
+                    </li>
                         {% endfor %}
                     </ul>
                     {% endif %}
@@ -55,6 +66,8 @@
                         <option value="{{ plant_type.id }}">{{ plant_type.typeName }}</option>
                         {% endfor %}
                     </select>
+                    <input type="number" name="water_date" placeholder="Water every X days" required>
+
                     <button type="submit">Add plant</button>
                 </form>
             </div>
@@ -67,7 +80,7 @@
                     {% else %}
                         <ul>
                         {% for plant in plant %}
-                            <li>{{plant.plantName}} - Your next watering {{ plant.waterDate }} days </li>
+                            <li>{{plant.plantName}} - Your next watering in {{ plant.days_left }} days </li>
                         {% endfor %}
 
                         </ul>

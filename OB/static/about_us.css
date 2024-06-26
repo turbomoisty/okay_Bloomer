@@ -1,5 +1,5 @@
 body {
-    font-family: 'Courier New', sans-serif;
+
     color: #333;
     margin: 0;
     padding: 0;
@@ -21,7 +21,7 @@ header {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    height: 50vh;
+    height: 60vh;
     margin: 0;
     padding: 0;
     border: 0;
@@ -43,9 +43,10 @@ header::before {
 .header-text-about-us {
     position: relative;
     margin: auto;
+    font-size: 40px;
     text-align: center;
     color: white;
-    z-index: 2;
+    z-index: 6;
     width: 80%;
     padding-top: 40px;
 
@@ -64,7 +65,7 @@ header {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    height: 20vh; /* Adjust height as needed */
+    height: 50vh; /* Adjust height as needed */
 }
 
 header::before {

@@ -1,6 +1,8 @@
-from flask import Blueprint, render_template, request, url_for, session, redirect
-from flask_login import login_user, login_required, current_user
+from flask import Blueprint, render_template, request, url_for, flash, redirect
+from flask_login import login_required, current_user
 from .models import Plant, userComment, plantType, userPost
+from datetime import datetime
+from .timer import get_days_left
 
 from . import db
 
@@ -44,6 +46,9 @@ def watering_schedules():
     plants = Plant.query.filter_by(user_id=current_user.id).all()
     comments = userComment.query.filter_by(user_id=current_user.id).all()
     plant_types = plantType.query.all()
+
+    for plant in plants:
+        plant.days_left = get_days_left(plant)
     return render_template('watering_schedules.html', plants=plants, comments=comments, plant_types=plant_types,
                            username=current_user.userName)
 
@@ -55,11 +60,22 @@ def watering_schedules():
 def add_plant():
     plant_name = request.form.get('plant_name')
     plant_type = request.form.get('plant_type')
-    if plant_name and plant_type:
-        new_plant = Plant(plantName=plant_name, waterDate=2, plant_id=plant_type, user_id=current_user.id)
+    water_date = request.form.get('water_date')
+    if plant_name and plant_type and water_date:
+        try:
+            water_date = int(water_date)
+        except ValueError:
+            flash("Water date must be a number", category='error')
+            return redirect(url_for('views.watering_schedules'))
+
+        new_plant = Plant(plantName=plant_name, waterDate=water_date, last_watered=datetime.now(),plant_id=plant_type, user_id=current_user.id)
         db.session.add(new_plant)
         db.session.commit()
-    return redirect(url_for('views.watering_schedules'))
+        return redirect(url_for('views.watering_schedules'))
+
+    else:
+        flash("All fields are required", category='error')
+        return redirect(url_for('views.watering_schedules'))
 
 
 ##double check to see if all objects are named consistently.

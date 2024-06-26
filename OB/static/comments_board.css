@@ -1,10 +1,23 @@
-/* General Styles */
 
+/* Just copy and paste the nav and the header to all css files.*/
 .backButton {
     position: absolute;
-    top: 10px;  /* Adjust as needed */
-    left: 10px; /* Adjust as needed */
-    z-index: 100; /* Ensure it's on top of other elements */
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+}
+
+.header-text-forums {
+    position: relative;
+    margin: auto;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    z-index: 6;
+    width: 80%;
+    padding-top: 40px;
+    font-family: 'Canela-Regular', serif;
+
 }
 
 .createPost {
@@ -21,7 +34,7 @@
 
 header {
     width: 100%;
-    background: url("https://raw.githubusercontent.com/turbomoisty/okay_Bloomer/8e31ce19f4045a22fc3853f4a3819d390bf362d0/OB/images/obhomepage3.jpeg") no-repeat center top;
+
     background-size: cover;
     text-align: center;
     display: flex;
@@ -31,7 +44,7 @@ header {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    height:20vh; /* Adjust height as needed */
+    height:50vh;
 }
 
 header::before {
@@ -41,9 +54,9 @@ header::before {
    left: 0;
    width: 100%;
    height: 100%;
-   background-color: rgba(29, 86, 49, 0.89);  /* Adjust the color and transparency here */
-   z-index: 1; /* Ensure the overlay is above the background image but below the content */
-   pointer-events: none; /* Prevent overlay from interfering with interactions */
+   background-color: rgba(29, 86, 49, 0.89);
+   z-index: 1;
+   pointer-events: none;
 }
 
 .header-text {
@@ -57,13 +70,13 @@ header::before {
 }
 
 .header-text h1 {
-    font-size: 6vw; /* Adjust to be responsive */
+    font-size: 6vw;
     font-family: 'Canela-Regular', serif;
     margin: 0;
 }
 
 .header-text p {
-    font-size: 2vw; /* Adjust to be responsive */
+    font-size: 2vw;
     font-family: 'Canela-Regular', serif;
     margin-top: 20px;
 }
@@ -117,7 +130,7 @@ nav ul li a {
     font-family: Nib, serif;
     font-weight: 400;
     line-height: 2;
-    font-size: 1.5vw; /* Adjust to be responsive */
+    font-size: 1.5vw;
     position: relative;
 }
 
@@ -164,7 +177,6 @@ footer {
     color: white;
 }
 
-/* Post Creation Styles */
 .post-creation {
     margin-bottom: 2em;
 }
@@ -202,7 +214,6 @@ footer {
     background-color: #555;
 }
 
-/* Posts and Comments Styles */
 .posts {
 
     margin-bottom: 1em;
@@ -212,7 +223,7 @@ footer {
 
     border-bottom: 3px solid #ddd;
     padding: 2em 0;
-    background-color: #C7E8C6; /* Background color for each post */
+    background-color: #C7E8C6;
     margin-bottom: 1em;
     margin-top:2em;
     padding: 1em;
@@ -231,7 +242,7 @@ footer {
 }
 
 .post h2 a:hover {
-    color: #1E90FF; /* Bright Blue */
+    color: #1E90FF;
 
     text-decoration: underline;
 }
@@ -330,9 +341,6 @@ footer {
     color: inherit;
 }
 
-.special-font {
-    font-family: 'Special Elite', cursive; /* Example of a special font */
-}}
 
 .scrolled {
     background-color: rgba(255, 255, 255, 1);

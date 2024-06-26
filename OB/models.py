@@ -1,6 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from . import db
+from datetime import datetime
 
 
 #####GO THROUGH THE MODEL TO DOUBLE CHECK#######
@@ -51,13 +52,14 @@ class journalEntry(db.Model):
 # We specifically chose 39 characters for the plantType_id is because the longest plant name is 39 letters
 class Plant(db.Model):
     __tablename__ = 'plant'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True)
     plantName = db.Column(db.String(15), nullable=False)
-    # plantType = db.Column(db.String(39), index=False, unique=False)
     waterDate = db.Column(db.Integer, nullable=False)
+    last_watered = db.Column(db.DateTime, default=datetime.now())
     user_id = db.Column(db.Integer, db.ForeignKey('bloomer_user.id'), nullable=False)
     plant_id = db.Column(db.Integer, db.ForeignKey('plant_type.id'), nullable=False)
     plantJournalEntry = db.relationship('journalEntry', backref='plantEntry', lazy=True)
+
 
 
 # In regard to waterDate we will be also looking into how implement it as a calendar not add it in manually
