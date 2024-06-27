@@ -14,7 +14,7 @@
                 <li class="nav-name"><a class="special-font" href="{{url_for('views.main_page')}}" data-text="okayBloomerNavName">okaybloomer</a></li>
             </ul>
             <ul class="nav-right">
-                <li><a href="#home" data-text="Home">Home</a></li>
+                <li><a href="{{url_for('views.main_page')}}" data-text="Home">Home</a></li>
                 <li><a href="{{url_for('views.about_us')}}" data-text="About">About</a></li>
                 <li><a href="{{url_for('views.rewards') }}" data-text="Services">Services</a></li>
                 {% if current_user.is_authenticated %}
@@ -40,7 +40,14 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Forum Board. All rights reserved.</p>
+    <div class="footer-content">
+        <div class="footer-bottom">© 2024 Okay Bloomer. All rights reserved. We value and respect your privacy.</div>
+    </div>
+    <div class="line-in-middle"></div>
+    <div class="footer-end">
+        <p>okaybloomer</p>
+    </div>
+
     </footer>
 </body>
     <script src="{{ url_for('static', filename='main_page.js')}}"></script>

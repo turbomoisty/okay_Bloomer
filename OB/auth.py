@@ -1,10 +1,12 @@
 from flask import Blueprint, request, redirect, url_for, flash, jsonify, render_template, current_app
-from werkzeug.security import check_password_hash, generate_password_hash
 from .models import bloomerUser, db
 from flask_login import login_user, logout_user, login_required
+from regex import regex
 
 auth = Blueprint('auth', __name__)
 
+
+# email_validation = 'r[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}'
 
 @auth.route('/login_page', methods=['GET', 'POST'])
 def login_page():
@@ -32,10 +34,10 @@ def login_page():
 
             if not username or not password or not email:
                 flash("Please ensure all fields are filled", 'error')
-            else:
-                # email_validation = 'r[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}'
-                # if re.match(email_validation):
+            # elif not regex.match(string=email_validation):
+            #     flash("Invalid email has been entered, ;error'")
 
+            else:
                 existing_mail = bloomerUser.query.filter_by(userEmail=email).first()
                 existing_name = bloomerUser.query.filter_by(userName=username).first()
                 if existing_mail:
@@ -63,19 +65,4 @@ def logout():
     return redirect(url_for('auth.login_page'))
 
 
-@auth.route('/add-user', methods=['POST'])
-def add_user():
-    data = request.get_json()
-    username = data.get('userName')
-    email = data.get('userEmail')
-    password = data.get('userPassword')
 
-    if not username or not email or not password:
-        return jsonify({"error": "some fields are empty"}), 400
-
-
-    new_user = bloomerUser(userName=username, userEmail=email)
-    db.session.add(new_user)
-    db.session.commit()
-
-    return jsonify({"message": "User created successfully"}), 201

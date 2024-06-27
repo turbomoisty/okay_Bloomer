@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-
+# from secrets import token_hex, secrets
 db = SQLAlchemy()
 login_manger = LoginManager()
 
@@ -10,7 +10,7 @@ def create_site():
     # Create unique token per user instance.
 
     app = Flask(__name__)
-    app.secret_key = 'test_key'  # secrets.token_hex(16)
+    app.secret_key = 'test_key'  # secrets.token_hex(16) - stick with test key for testing.
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///myPlantDB.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
