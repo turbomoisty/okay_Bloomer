@@ -64,6 +64,7 @@ def add_plant():
     if plant_name and plant_type and water_date:
         try:
             water_date = int(water_date)
+
         except ValueError:
             flash("Water date must be a number", category='error')
             return redirect(url_for('views.watering_schedules'))

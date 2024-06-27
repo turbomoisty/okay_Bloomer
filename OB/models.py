@@ -23,7 +23,7 @@ class bloomerUser(db.Model, UserMixin):
 
     @password.setter
     def password(self, password):
-        self.userPassword = generate_password_hash(password)
+        self.userPassword = generate_password_hash(password, method='pbkdf2:sha256')
 
     def check_password(self, password):
         return check_password_hash(self.userPassword, password)

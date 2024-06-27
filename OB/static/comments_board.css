@@ -373,5 +373,46 @@ nav.scrolled ul li a.no-color-change, nav.scrolled ul li a.no-color-change:hover
 nav.scrolled ul li a {
     color: black !important;
 }
+footer {
+    background-color: rgba(0, 0, 0, 0.85);
+    width: 100%;
+    text-align: center;
+    color: white;
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
 
+.footer-content {
+    max-width: 1200px;
+    font-family: 'Canela-Regular', serif;
+    margin: 0 auto;
+    padding: 20px 0;
+}
 
+.footer-bottom {
+    font-family: 'Canela-Regular', serif;
+    font-size: 2em;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-end {
+    width: 100%;
+    border-top: 1px solid white;
+    padding-top: 10px;
+    margin-top: 20px;
+    font-size: 12em;
+    font-family: 'Canela-Regular', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-end p {
+    margin: 10px 0;
+    font-size: 1em;
+    white-space: nowrap;
+    justify-content: center;
+    box-sizing: border-box;
+}
