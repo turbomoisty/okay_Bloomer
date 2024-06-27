@@ -64,11 +64,13 @@ def add_plant():
     if plant_name and plant_type and water_date:
         try:
             water_date = int(water_date)
+        # Add logic to ensure that water date cannot be less than 1. Currently one profile has -1 as value
+        # I think we also don't have logic to reset the day once it reaches 0???? Do it when we have time
 
         except ValueError:
             flash("Water date must be a number", category='error')
             return redirect(url_for('views.watering_schedules'))
-
+        # Need to implement a delete button otherwise, it might constantly just spam with notifications
         new_plant = Plant(plantName=plant_name, waterDate=water_date, last_watered=datetime.now(),plant_id=plant_type, user_id=current_user.id)
         db.session.add(new_plant)
         db.session.commit()
